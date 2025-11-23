@@ -2,7 +2,7 @@
 
 import { createTheme } from '@mui/material/styles';
 
-// PHASE 4: New color system (Gold + Soft Orange)
+// Final color system (Gold + Soft Orange)
 export const colors = {
   primary: {
     main: '#FF8C42',
@@ -20,14 +20,15 @@ export const colors = {
     light: '#E7CF8B',
   },
   neutral: {
-    charcoal: '#1C1C1C',
+    charcoal: '#1A1A1A',
     darkGray: '#2A2A2A',
     lightGray: '#E4E4E4',
+    offWhite: '#F6F6F6',
   },
   gradients: {
     orangeToGold: 'linear-gradient(135deg, #FF8C42 0%, #C8A951 100%)',
-    goldToAmber: 'linear-gradient(135deg, #C8A951 0%, #E7CF8B 100%)',
-    darkOverlay: 'linear-gradient(135deg, rgba(28, 28, 28, 0.9) 0%, rgba(42, 42, 42, 0.85) 100%)',
+    goldToAmber: 'linear-gradient(135deg, #C8A951 0%, #D4B969 50%, #E7CF8B 100%)',
+    darkOverlay: 'linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.85) 100%)',
   },
 };
 
@@ -45,7 +46,7 @@ const theme = createTheme({
       dark: colors.secondary.dark,
     },
     background: {
-      default: '#FAFAFA',
+      default: '#F6F6F6',
       paper: '#FFFFFF',
     },
     text: {

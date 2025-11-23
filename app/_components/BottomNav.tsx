@@ -25,7 +25,7 @@ export default function BottomNav() {
   return (
     <Paper
       sx={{
-        position: 'fixed',
+        position: 'absolute',
         bottom: 0,
         left: 0,
         right: 0,

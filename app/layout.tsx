@@ -58,6 +58,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   style={{
                     width: '100%',
                     height: '100%',
+                    position: 'relative',
                   }}
                 >
                   <div style={{ paddingBottom: '60px', minHeight: '100%' }}>
@@ -68,7 +69,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
           ) : (
-            <div className="desktop-mode">
+            <div className="desktop-mode" style={{ position: 'relative' }}>
               <div style={{ paddingBottom: '60px' }}>
                 {children}
               </div>

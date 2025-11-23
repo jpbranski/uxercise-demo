@@ -49,13 +49,14 @@ export default function DashboardPage() {
       <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
         <Box
           sx={{
-            width: 48,
-            height: 48,
-            borderRadius: '12px',
+            width: 52,
+            height: 52,
+            borderRadius: '14px',
             background: colors.gradients.orangeToGold,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+            boxShadow: '0 4px 12px rgba(255, 140, 66, 0.25)',
           }}
         >
           <FitnessCenterIcon sx={{ color: '#FFF', fontSize: 28 }} />
@@ -64,31 +65,37 @@ export default function DashboardPage() {
           <Typography variant="h5" sx={{ fontWeight: 700, color: colors.neutral.charcoal }}>
             Welcome Back
           </Typography>
-          <Typography variant="body2" sx={{ color: colors.neutral.darkGray }}>
+          <Typography variant="body2" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
             {profile.name}
           </Typography>
         </Box>
       </Box>
 
       {/* Stat Cards */}
-      <Grid container spacing={2} sx={{ mb: 3 }}>
+      <Grid container spacing={2.5} sx={{ mb: 3 }}>
         <Grid item xs={6}>
           <Card
             sx={{
               background: colors.gradients.orangeToGold,
               color: '#FFF',
-              borderRadius: '14px',
+              borderRadius: '16px',
+              boxShadow: '0 4px 16px rgba(255, 140, 66, 0.25)',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 6px 20px rgba(255, 140, 66, 0.3)',
+              },
             }}
           >
-            <CardContent>
-              <Typography variant="body2" sx={{ opacity: 0.9, mb: 0.5 }}>
+            <CardContent sx={{ p: 2.5 }}>
+              <Typography variant="body2" sx={{ opacity: 0.95, mb: 0.5, fontWeight: 600 }}>
                 This Week
               </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              <Typography variant="h3" sx={{ fontWeight: 700, my: 0.5 }}>
                 {thisWeekLogs.length}
               </Typography>
-              <Typography variant="caption" sx={{ opacity: 0.8 }}>
-                Workouts
+              <Typography variant="caption" sx={{ opacity: 0.9 }}>
+                Workouts Completed
               </Typography>
             </CardContent>
           </Card>
@@ -98,18 +105,24 @@ export default function DashboardPage() {
             sx={{
               background: colors.gradients.goldToAmber,
               color: colors.neutral.charcoal,
-              borderRadius: '14px',
+              borderRadius: '16px',
+              boxShadow: '0 4px 16px rgba(200, 169, 81, 0.25)',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+              '&:hover': {
+                transform: 'translateY(-2px)',
+                boxShadow: '0 6px 20px rgba(200, 169, 81, 0.3)',
+              },
             }}
           >
-            <CardContent>
-              <Typography variant="body2" sx={{ opacity: 0.9, mb: 0.5 }}>
+            <CardContent sx={{ p: 2.5 }}>
+              <Typography variant="body2" sx={{ opacity: 0.9, mb: 0.5, fontWeight: 600 }}>
                 Total Time
               </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 700 }}>
+              <Typography variant="h3" sx={{ fontWeight: 700, my: 0.5 }}>
                 {Math.floor(totalTime / 60)}h
               </Typography>
-              <Typography variant="caption" sx={{ opacity: 0.8 }}>
-                {totalTime % 60}m logged
+              <Typography variant="caption" sx={{ opacity: 0.85 }}>
+                {totalTime % 60}m Logged
               </Typography>
             </CardContent>
           </Card>
@@ -117,33 +130,51 @@ export default function DashboardPage() {
       </Grid>
 
       {/* Quick Start */}
-      <Card sx={{ mb: 3, borderRadius: '14px' }}>
-        <CardContent sx={{ textAlign: 'center', py: 4 }}>
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
-            Quick Start
+      <Card
+        sx={{
+          mb: 3,
+          borderRadius: '18px',
+          background: 'linear-gradient(135deg, #FFFFFF 0%, #F9F9F9 100%)',
+          boxShadow: '0 2px 16px rgba(0, 0, 0, 0.08)',
+          border: '1px solid rgba(255, 140, 66, 0.1)',
+          transition: 'all 0.2s ease',
+          '&:hover': {
+            boxShadow: '0 4px 20px rgba(255, 140, 66, 0.15)',
+            transform: 'translateY(-2px)',
+          },
+        }}
+      >
+        <CardContent sx={{ textAlign: 'center', py: 4, px: 3 }}>
+          <Typography variant="h6" sx={{ mb: 2.5, fontWeight: 700, color: colors.neutral.charcoal }}>
+            Quick Start Workout
           </Typography>
           <Box
             sx={{
-              width: 80,
-              height: 80,
+              width: 100,
+              height: 100,
               borderRadius: '50%',
               background: colors.gradients.orangeToGold,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              margin: '0 auto 16px',
+              margin: '0 auto 20px',
               cursor: 'pointer',
-              transition: 'transform 0.15s ease',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 4px 16px rgba(255, 140, 66, 0.3)',
               '&:hover': {
-                transform: 'scale(1.05)',
+                transform: 'scale(1.08)',
+                boxShadow: '0 6px 24px rgba(255, 140, 66, 0.4)',
+              },
+              '&:active': {
+                transform: 'scale(1.02)',
               },
             }}
             onClick={() => router.push('/builder')}
           >
-            <AddIcon sx={{ fontSize: 40, color: '#FFF' }} />
+            <AddIcon sx={{ fontSize: 48, color: '#FFF' }} />
           </Box>
-          <Typography variant="body2" sx={{ color: colors.neutral.darkGray }}>
-            Create New Workout
+          <Typography variant="body2" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
+            Create a new workout or choose from templates
           </Typography>
         </CardContent>
       </Card>
@@ -151,15 +182,26 @@ export default function DashboardPage() {
       {/* Today's Plan */}
       {todayWorkouts.length > 0 && (
         <Box sx={{ mb: 3 }}>
-          <Typography variant="h6" sx={{ mb: 2, fontWeight: 600 }}>
+          <Typography variant="h6" sx={{ mb: 2.5, fontWeight: 700, color: colors.neutral.charcoal }}>
             Today's Plan
           </Typography>
           {todayWorkouts.map(workout => (
-            <Card key={workout.id} sx={{ mb: 2, borderRadius: '14px' }}>
-              <CardContent>
+            <Card
+              key={workout.id}
+              sx={{
+                mb: 2,
+                borderRadius: '16px',
+                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
+                transition: 'all 0.2s ease',
+                '&:hover': {
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                },
+              }}
+            >
+              <CardContent sx={{ p: 2.5 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <Box sx={{ flex: 1 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5, color: colors.neutral.charcoal }}>
                       {workout.name}
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 1 }}>
@@ -167,7 +209,7 @@ export default function DashboardPage() {
                         <Chip key={tag} label={tag} size="small" />
                       ))}
                     </Box>
-                    <Typography variant="caption" sx={{ color: colors.neutral.darkGray }}>
+                    <Typography variant="caption" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
                       {workout.estimatedDuration} min · {workout.exercises.length} exercises
                     </Typography>
                   </Box>
@@ -175,7 +217,14 @@ export default function DashboardPage() {
                     sx={{
                       background: colors.gradients.orangeToGold,
                       color: '#FFF',
-                      '&:hover': { background: colors.gradients.orangeToGold, opacity: 0.9 },
+                      width: 48,
+                      height: 48,
+                      boxShadow: '0 2px 8px rgba(255, 140, 66, 0.3)',
+                      '&:hover': {
+                        background: colors.gradients.orangeToGold,
+                        transform: 'scale(1.05)',
+                        boxShadow: '0 4px 12px rgba(255, 140, 66, 0.4)',
+                      },
                     }}
                     onClick={() => router.push(`/builder?id=${workout.id}&play=true`)}
                   >
@@ -190,45 +239,69 @@ export default function DashboardPage() {
 
       {/* Recent Workouts */}
       <Box>
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-          <Typography variant="h6" sx={{ fontWeight: 600 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.5 }}>
+          <Typography variant="h6" sx={{ fontWeight: 700, color: colors.neutral.charcoal }}>
             Recent Workouts
           </Typography>
           <Button
             size="small"
-            onClick={() => router.push('/log')}
-            sx={{ color: colors.primary.main }}
+            onClick={() => router.push('/workouts')}
+            sx={{
+              color: colors.primary.main,
+              fontWeight: 600,
+              '&:hover': {
+                bgcolor: 'rgba(255, 140, 66, 0.08)',
+              },
+            }}
           >
             View All
           </Button>
         </Box>
 
         {recentLogs.length === 0 ? (
-          <Card sx={{ borderRadius: '14px' }}>
-            <CardContent sx={{ textAlign: 'center', py: 4 }}>
-              <Typography variant="body2" sx={{ color: colors.neutral.darkGray }}>
-                No workouts logged yet. Start your first workout!
+          <Card
+            sx={{
+              borderRadius: '16px',
+              boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
+            }}
+          >
+            <CardContent sx={{ textAlign: 'center', py: 5 }}>
+              <FitnessCenterIcon sx={{ fontSize: 64, color: colors.neutral.lightGray, mb: 2 }} />
+              <Typography variant="body1" sx={{ color: colors.neutral.darkGray, mb: 3, fontWeight: 500 }}>
+                No workouts logged yet
               </Typography>
               <Button
                 variant="contained"
-                sx={{ mt: 2 }}
+                sx={{ px: 4, py: 1.5 }}
                 onClick={() => router.push('/builder')}
               >
-                Create Workout
+                Create Your First Workout
               </Button>
             </CardContent>
           </Card>
         ) : (
           recentLogs.map(log => (
-            <Card key={log.id} sx={{ mb: 2, borderRadius: '14px' }}>
-              <CardContent>
-                <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
+            <Card
+              key={log.id}
+              sx={{
+                mb: 2,
+                borderRadius: '16px',
+                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
+                transition: 'all 0.2s ease',
+                '&:hover': {
+                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                  transform: 'translateY(-1px)',
+                },
+              }}
+            >
+              <CardContent sx={{ p: 2.5 }}>
+                <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5, color: colors.neutral.charcoal }}>
                   {log.workoutName}
                 </Typography>
-                <Typography variant="caption" sx={{ color: colors.neutral.darkGray }}>
+                <Typography variant="caption" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
                   {new Date(log.completedAt).toLocaleDateString()} · {log.duration} min
                 </Typography>
-                <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 1 }}>
+                <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 1.5 }}>
                   {log.exercises.slice(0, 3).map((ex, idx) => (
                     <Chip key={idx} label={ex.name} size="small" />
                   ))}
