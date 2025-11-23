@@ -14,7 +14,9 @@ import {
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
-import { loadProfile, saveProfile, Profile } from '../_lib/storage';
+import LightModeIcon from '@mui/icons-material/LightMode';
+import DarkModeIcon from '@mui/icons-material/DarkMode';
+import { loadProfile, saveProfile, Profile, loadTheme, saveTheme, Theme } from '../_lib/storage';
 import { colors } from '../_theme/theme';
 
 export default function AccountPage() {
@@ -24,11 +26,19 @@ export default function AccountPage() {
     weightUnit: 'kg',
   });
   const [hasChanges, setHasChanges] = useState(false);
+  const [theme, setTheme] = useState<Theme>('light');
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     setProfile(loadProfile());
+    setTheme(loadTheme());
   }, []);
+
+  const handleThemeChange = (newTheme: Theme) => {
+    setTheme(newTheme);
+    saveTheme(newTheme);
+    document.body.className = `theme-${newTheme}`;
+  };
 
   const handleSave = () => {
     saveProfile(profile);
@@ -94,7 +104,7 @@ export default function AccountPage() {
   const bmi = calculateBMI();
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: '#FAFAFA', p: 3 }}>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'var(--bg)', p: 3 }}>
       {/* Header */}
       <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: colors.neutral.charcoal }}>
         My Profile
@@ -283,6 +293,53 @@ export default function AccountPage() {
               </Typography>
             </Box>
           )}
+        </CardContent>
+      </Card>
+
+      {/* Appearance */}
+      <Card sx={{ mb: 3, borderRadius: '16px', boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)' }}>
+        <CardContent sx={{ p: 3 }}>
+          <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: colors.neutral.charcoal }}>
+            Appearance
+          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <Typography variant="body2" sx={{ fontWeight: 600, color: colors.neutral.charcoal }}>
+              Theme
+            </Typography>
+            <ToggleButtonGroup
+              value={theme}
+              exclusive
+              onChange={(e, value) => value && handleThemeChange(value)}
+              size="small"
+              sx={{
+                '& .MuiToggleButton-root': {
+                  px: 2,
+                  py: 1,
+                  fontWeight: 600,
+                  fontSize: '0.75rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                  '&.Mui-selected': {
+                    bgcolor: colors.primary.main,
+                    color: '#FFF',
+                    '&:hover': {
+                      bgcolor: colors.primary.dark,
+                    },
+                  },
+                },
+              }}
+            >
+              <ToggleButton value="light">
+                <LightModeIcon sx={{ fontSize: '1rem' }} />
+                Light
+              </ToggleButton>
+              <ToggleButton value="dark">
+                <DarkModeIcon sx={{ fontSize: '1rem' }} />
+                Dark
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </Box>
         </CardContent>
       </Card>
 

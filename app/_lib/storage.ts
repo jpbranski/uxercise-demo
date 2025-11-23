@@ -5,6 +5,7 @@ const KEYS = {
   LOGS: 'uxercise_demo_logs_v1',
   PROFILE: 'ux_profile_v1',
   SETTINGS: 'uxercise_demo_settings_v1',
+  THEME: 'ux_theme_v1',
 } as const;
 
 export interface Exercise {
@@ -170,6 +171,28 @@ export function saveSettings(settings: Settings): void {
     localStorage.setItem(KEYS.SETTINGS, JSON.stringify(settings));
   } catch (error) {
     console.error('Failed to save settings:', error);
+  }
+}
+
+// Theme
+export type Theme = 'light' | 'dark';
+
+export function loadTheme(): Theme {
+  if (typeof window === 'undefined') return 'light';
+  try {
+    const theme = localStorage.getItem(KEYS.THEME);
+    return theme === 'dark' ? 'dark' : 'light';
+  } catch {
+    return 'light';
+  }
+}
+
+export function saveTheme(theme: Theme): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(KEYS.THEME, theme);
+  } catch (error) {
+    console.error('Failed to save theme:', error);
   }
 }
 

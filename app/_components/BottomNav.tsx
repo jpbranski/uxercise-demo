@@ -7,8 +7,13 @@ import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import HistoryIcon from '@mui/icons-material/History';
 import PersonIcon from '@mui/icons-material/Person';
+import { DeviceMode } from './DevTools/DevToolsPanel';
 
-export default function BottomNav() {
+interface BottomNavProps {
+  deviceMode: DeviceMode;
+}
+
+export default function BottomNav({ deviceMode }: BottomNavProps) {
   const pathname = usePathname();
   const router = useRouter();
 
@@ -25,10 +30,13 @@ export default function BottomNav() {
   return (
     <Paper
       sx={{
-        position: 'absolute',
+        position: deviceMode === 'desktop' ? 'fixed' : 'absolute',
         bottom: 0,
-        left: 0,
-        right: 0,
+        left: deviceMode === 'desktop' ? '50%' : 0,
+        right: deviceMode === 'desktop' ? 'auto' : 0,
+        transform: deviceMode === 'desktop' ? 'translateX(-50%)' : 'none',
+        width: deviceMode === 'desktop' ? '540px' : 'auto',
+        maxWidth: deviceMode === 'desktop' ? '100%' : 'auto',
         zIndex: 1000,
         borderTop: '1px solid #E4E4E4',
       }}
