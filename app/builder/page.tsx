@@ -195,7 +195,7 @@ function BuilderContent() {
   };
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: '#FAFAFA', p: 3 }}>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'var(--bg)', p: 3 }}>
       {/* Header */}
       <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
         <Button variant="outlined" onClick={() => router.back()}>

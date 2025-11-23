@@ -92,7 +92,7 @@ export default function LogPage() {
     .sort((a, b) => new Date(b.completedAt).getTime() - new Date(a.completedAt).getTime());
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: '#FAFAFA', p: 3 }}>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'var(--bg)', p: 3 }}>
       {/* Header */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
         <Typography variant="h5" sx={{ fontWeight: 700 }}>

@@ -44,7 +44,7 @@ export default function DashboardPage() {
   );
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: '#FAFAFA', p: 3 }}>
+    <Box sx={{ minHeight: '100vh', bgcolor: 'var(--bg)', p: 3 }}>
       {/* Header */}
       <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
         <Box
