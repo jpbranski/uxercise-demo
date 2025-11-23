@@ -86,7 +86,7 @@ export default function WorkoutsPage() {
         <Button
           variant="contained"
           startIcon={<AddIcon />}
-          onClick={() => router.push('/demo/builder')}
+          onClick={() => router.push('/builder')}
         >
           New
         </Button>
@@ -134,7 +134,7 @@ export default function WorkoutsPage() {
             <Button
               variant="contained"
               startIcon={<AddIcon />}
-              onClick={() => router.push('/demo/builder')}
+              onClick={() => router.push('/builder')}
             >
               Create Your First Workout
             </Button>
@@ -171,7 +171,7 @@ export default function WorkoutsPage() {
                   <Box sx={{ display: 'flex', gap: 0.5 }}>
                     <IconButton
                       size="small"
-                      onClick={() => router.push(`/demo/builder?id=${workout.id}&play=true`)}
+                      onClick={() => router.push(`/builder?id=${workout.id}&play=true`)}
                       sx={{
                         background: colors.gradients.orangeToGold,
                         color: '#FFF',
@@ -182,7 +182,7 @@ export default function WorkoutsPage() {
                     </IconButton>
                     <IconButton
                       size="small"
-                      onClick={() => router.push(`/demo/builder?id=${workout.id}`)}
+                      onClick={() => router.push(`/builder?id=${workout.id}`)}
                     >
                       <EditIcon />
                     </IconButton>

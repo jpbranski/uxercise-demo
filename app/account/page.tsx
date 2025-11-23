@@ -11,7 +11,6 @@ import {
   Avatar,
   ToggleButton,
   ToggleButtonGroup,
-  Grid,
 } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';

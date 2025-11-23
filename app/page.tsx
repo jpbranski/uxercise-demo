@@ -17,7 +17,6 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import { loadWorkouts, loadLogs, loadProfile, Workout, WorkoutLog } from './_lib/storage';
 import { colors } from './_theme/theme';
-import Image from 'next/image';
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -139,7 +138,7 @@ export default function DashboardPage() {
                 transform: 'scale(1.05)',
               },
             }}
-            onClick={() => router.push('/demo/builder')}
+            onClick={() => router.push('/builder')}
           >
             <AddIcon sx={{ fontSize: 40, color: '#FFF' }} />
           </Box>
@@ -178,7 +177,7 @@ export default function DashboardPage() {
                       color: '#FFF',
                       '&:hover': { background: colors.gradients.orangeToGold, opacity: 0.9 },
                     }}
-                    onClick={() => router.push(`/demo/builder?id=${workout.id}&play=true`)}
+                    onClick={() => router.push(`/builder?id=${workout.id}&play=true`)}
                   >
                     <PlayArrowIcon />
                   </IconButton>
@@ -197,7 +196,7 @@ export default function DashboardPage() {
           </Typography>
           <Button
             size="small"
-            onClick={() => router.push('/demo/log')}
+            onClick={() => router.push('/log')}
             sx={{ color: colors.primary.main }}
           >
             View All
@@ -213,7 +212,7 @@ export default function DashboardPage() {
               <Button
                 variant="contained"
                 sx={{ mt: 2 }}
-                onClick={() => router.push('/demo/builder')}
+                onClick={() => router.push('/builder')}
               >
                 Create Workout
               </Button>
