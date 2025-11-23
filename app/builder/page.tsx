@@ -317,15 +317,35 @@ function BuilderContent() {
               </Box>
 
               {exercise.sets.map((set, setIdx) => (
-                <Box key={set.id} sx={{ mb: 1, display: 'flex', gap: 1, alignItems: 'center' }}>
-                  <Typography variant="caption" sx={{ minWidth: 60 }}>
-                    Set {setIdx + 1}:
+                <Box
+                  key={set.id}
+                  sx={{
+                    mb: 1.5,
+                    display: 'flex',
+                    gap: 1.5,
+                    alignItems: 'center',
+                    p: 1.5,
+                    borderRadius: '10px',
+                    bgcolor: '#F9F9F9',
+                    transition: 'all 0.2s ease',
+                    '&:hover': {
+                      bgcolor: '#F5F5F5',
+                    },
+                  }}
+                >
+                  <Typography variant="caption" sx={{ minWidth: 60, fontWeight: 600, color: colors.neutral.darkGray }}>
+                    Set {setIdx + 1}
                   </Typography>
 
-                  <FormControl size="small" sx={{ minWidth: 120 }}>
+                  <FormControl size="small" sx={{ minWidth: 130 }}>
                     <Select
                       value={set.type}
                       onChange={(e) => handleUpdateSet(exercise.id, set.id, { type: e.target.value as any })}
+                      sx={{
+                        '& .MuiSelect-select': {
+                          py: 1.25,
+                        },
+                      }}
                     >
                       <MenuItem value="standard">Standard</MenuItem>
                       <MenuItem value="warm-up">Warm-up</MenuItem>
@@ -343,7 +363,14 @@ function BuilderContent() {
                       handleUpdateSet(exercise.id, set.id, { reps: parseInt(e.target.value) || 0 })
                     }
                     placeholder="Reps"
-                    sx={{ width: 80 }}
+                    sx={{
+                      width: 90,
+                      '& input': {
+                        py: 1.25,
+                        fontSize: '0.95rem',
+                        fontWeight: 500,
+                      },
+                    }}
                   />
 
                   <TextField
@@ -354,13 +381,26 @@ function BuilderContent() {
                       handleUpdateSet(exercise.id, set.id, { weight: parseInt(e.target.value) || 0 })
                     }
                     placeholder="Weight"
-                    sx={{ width: 80 }}
+                    sx={{
+                      width: 90,
+                      '& input': {
+                        py: 1.25,
+                        fontSize: '0.95rem',
+                        fontWeight: 500,
+                      },
+                    }}
                   />
 
                   <IconButton
                     size="small"
                     onClick={() => handleDeleteSet(exercise.id, set.id)}
-                    sx={{ color: '#F44336' }}
+                    sx={{
+                      color: '#F44336',
+                      p: 1,
+                      '&:hover': {
+                        bgcolor: 'rgba(244, 67, 54, 0.1)',
+                      },
+                    }}
                   >
                     <DeleteIcon fontSize="small" />
                   </IconButton>
@@ -396,40 +436,86 @@ function BuilderContent() {
         onClose={() => setShowTemplates(false)}
         maxWidth="sm"
         fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: '16px',
+            maxHeight: '80vh',
+          },
+        }}
       >
-        <DialogTitle>Choose Template</DialogTitle>
-        <DialogContent>
-          <Grid container spacing={2}>
-            {WORKOUT_TEMPLATES.map(template => (
-              <Grid item xs={12} key={template.name}>
-                <Card
-                  sx={{
-                    cursor: 'pointer',
-                    '&:hover': { boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)' },
-                  }}
-                  onClick={() => handleTemplateSelect(template)}
-                >
-                  <CardContent>
-                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
-                      {template.name}
-                    </Typography>
-                    <Box sx={{ display: 'flex', gap: 0.5, mb: 1 }}>
-                      <Chip label={template.difficulty} size="small" />
-                      {template.tags.slice(0, 2).map(tag => (
-                        <Chip key={tag} label={tag} size="small" />
-                      ))}
-                    </Box>
-                    <Typography variant="caption" sx={{ color: colors.neutral.darkGray }}>
-                      {template.estimatedDuration} min · {template.exercises.length} exercises
-                    </Typography>
-                  </CardContent>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
+        <DialogTitle sx={{ pb: 2, pt: 3, px: 3 }}>
+          <Typography variant="h5" sx={{ fontWeight: 700, color: colors.neutral.charcoal }}>
+            Choose Template
+          </Typography>
+          <Typography variant="body2" sx={{ color: colors.neutral.darkGray, mt: 0.5 }}>
+            Select a pre-built workout to get started quickly
+          </Typography>
+        </DialogTitle>
+        <DialogContent sx={{ px: 3, pt: 2 }}>
+          <Box sx={{ maxHeight: '50vh', overflowY: 'auto', pr: 1 }}>
+            <Grid container spacing={2}>
+              {WORKOUT_TEMPLATES.map(template => (
+                <Grid item xs={12} key={template.name}>
+                  <Card
+                    sx={{
+                      cursor: 'pointer',
+                      borderRadius: '14px',
+                      transition: 'all 0.2s ease',
+                      border: '1px solid transparent',
+                      '&:hover': {
+                        boxShadow: '0 4px 16px rgba(255, 140, 66, 0.2)',
+                        borderColor: colors.primary.main,
+                        transform: 'translateY(-2px)',
+                      },
+                    }}
+                    onClick={() => handleTemplateSelect(template)}
+                  >
+                    <CardContent sx={{ p: 2.5 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: colors.neutral.charcoal }}>
+                        {template.name}
+                      </Typography>
+                      <Box sx={{ display: 'flex', gap: 0.75, mb: 1.5, flexWrap: 'wrap' }}>
+                        <Chip
+                          label={template.difficulty}
+                          size="small"
+                          sx={{
+                            bgcolor: colors.gradients.goldToAmber,
+                            fontWeight: 600,
+                          }}
+                        />
+                        {template.tags.slice(0, 2).map(tag => (
+                          <Chip
+                            key={tag}
+                            label={tag}
+                            size="small"
+                            sx={{
+                              bgcolor: '#F0F0F0',
+                              fontWeight: 500,
+                            }}
+                          />
+                        ))}
+                      </Box>
+                      <Typography variant="body2" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
+                        {template.estimatedDuration} min · {template.exercises.length} exercises
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          </Box>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setShowTemplates(false)}>Cancel</Button>
+        <DialogActions sx={{ px: 3, py: 2.5, borderTop: '1px solid #E4E4E4' }}>
+          <Button
+            onClick={() => setShowTemplates(false)}
+            sx={{
+              color: colors.neutral.darkGray,
+              fontWeight: 600,
+              px: 3,
+            }}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
 
@@ -439,10 +525,23 @@ function BuilderContent() {
         onClose={() => setShowExercises(false)}
         maxWidth="md"
         fullWidth
+        PaperProps={{
+          sx: {
+            borderRadius: '16px',
+            maxHeight: '85vh',
+          },
+        }}
       >
-        <DialogTitle>Add Exercise</DialogTitle>
-        <DialogContent>
-          <Box sx={{ mb: 2 }}>
+        <DialogTitle sx={{ pb: 2, pt: 3, px: 3 }}>
+          <Typography variant="h5" sx={{ fontWeight: 700, color: colors.neutral.charcoal }}>
+            Add Exercise
+          </Typography>
+          <Typography variant="body2" sx={{ color: colors.neutral.darkGray, mt: 0.5 }}>
+            Browse 100+ exercises or use filters to find the perfect movement
+          </Typography>
+        </DialogTitle>
+        <DialogContent sx={{ px: 3, pt: 2 }}>
+          <Box sx={{ mb: 2.5 }}>
             <TextField
               fullWidth
               placeholder="Search exercises..."
@@ -450,7 +549,12 @@ function BuilderContent() {
               onChange={(e) =>
                 setExerciseFilters({ ...exerciseFilters, search: e.target.value })
               }
-              sx={{ mb: 2 }}
+              sx={{
+                mb: 2.5,
+                '& .MuiOutlinedInput-root': {
+                  borderRadius: '12px',
+                },
+              }}
             />
             <Grid container spacing={2}>
               <Grid item xs={4}>
@@ -510,33 +614,66 @@ function BuilderContent() {
             </Grid>
           </Box>
 
-          <Box sx={{ maxHeight: 400, overflowY: 'auto' }}>
-            {filteredExercises.map(ex => (
-              <Card
-                key={ex.id}
-                sx={{
-                  mb: 1,
-                  cursor: 'pointer',
-                  '&:hover': { bgcolor: '#F5F5F5' },
-                }}
-                onClick={() => handleAddExercise(ex)}
-              >
-                <CardContent sx={{ py: 1.5 }}>
-                  <Typography variant="body1" sx={{ fontWeight: 500 }}>
-                    {ex.name}
-                  </Typography>
-                  <Box sx={{ display: 'flex', gap: 0.5, mt: 0.5 }}>
-                    {ex.bodyPart.slice(0, 2).map(part => (
-                      <Chip key={part} label={part} size="small" />
-                    ))}
-                  </Box>
-                </CardContent>
-              </Card>
-            ))}
+          <Box sx={{ maxHeight: '45vh', overflowY: 'auto', pr: 1 }}>
+            {filteredExercises.length === 0 ? (
+              <Box sx={{ textAlign: 'center', py: 4 }}>
+                <Typography variant="body2" sx={{ color: colors.neutral.darkGray }}>
+                  No exercises found. Try adjusting your filters.
+                </Typography>
+              </Box>
+            ) : (
+              filteredExercises.map(ex => (
+                <Card
+                  key={ex.id}
+                  sx={{
+                    mb: 1.5,
+                    cursor: 'pointer',
+                    borderRadius: '12px',
+                    transition: 'all 0.2s ease',
+                    border: '1px solid transparent',
+                    '&:hover': {
+                      bgcolor: '#F9F9F9',
+                      borderColor: colors.primary.main,
+                      boxShadow: '0 2px 8px rgba(255, 140, 66, 0.15)',
+                    },
+                  }}
+                  onClick={() => handleAddExercise(ex)}
+                >
+                  <CardContent sx={{ py: 2, px: 2.5 }}>
+                    <Typography variant="body1" sx={{ fontWeight: 600, mb: 0.75, color: colors.neutral.charcoal }}>
+                      {ex.name}
+                    </Typography>
+                    <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
+                      {ex.bodyPart.slice(0, 2).map(part => (
+                        <Chip
+                          key={part}
+                          label={part}
+                          size="small"
+                          sx={{
+                            bgcolor: '#F0F0F0',
+                            fontWeight: 500,
+                            fontSize: '0.7rem',
+                          }}
+                        />
+                      ))}
+                    </Box>
+                  </CardContent>
+                </Card>
+              ))
+            )}
           </Box>
         </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setShowExercises(false)}>Cancel</Button>
+        <DialogActions sx={{ px: 3, py: 2.5, borderTop: '1px solid #E4E4E4' }}>
+          <Button
+            onClick={() => setShowExercises(false)}
+            sx={{
+              color: colors.neutral.darkGray,
+              fontWeight: 600,
+              px: 3,
+            }}
+          >
+            Cancel
+          </Button>
         </DialogActions>
       </Dialog>
     </Box>

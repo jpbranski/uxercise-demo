@@ -37,8 +37,16 @@ export default function AccountPage() {
   };
 
   const handleReset = () => {
-    setProfile(loadProfile());
-    setHasChanges(false);
+    if (confirm('Are you sure you want to reset your profile?')) {
+      const defaultProfile: Profile = {
+        name: 'Athlete',
+        heightUnit: 'cm',
+        weightUnit: 'kg',
+      };
+      setProfile(defaultProfile);
+      saveProfile(defaultProfile);
+      setHasChanges(false);
+    }
   };
 
   const handleChange = (field: keyof Profile, value: any) => {
@@ -75,39 +83,56 @@ export default function AccountPage() {
     return bmi.toFixed(1);
   };
 
+  const getBMICategory = (bmi: string) => {
+    const bmiNum = parseFloat(bmi);
+    if (bmiNum < 18.5) return 'Underweight';
+    if (bmiNum < 25) return 'Normal';
+    if (bmiNum < 30) return 'Overweight';
+    return 'Obese';
+  };
+
   const bmi = calculateBMI();
 
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: '#FAFAFA', p: 3 }}>
       {/* Header */}
-      <Typography variant="h5" sx={{ fontWeight: 700, mb: 3 }}>
-        My Account
+      <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: colors.neutral.charcoal }}>
+        My Profile
       </Typography>
 
-      {/* Avatar */}
-      <Card sx={{ mb: 3, borderRadius: '14px' }}>
+      {/* Avatar Card */}
+      <Card sx={{ mb: 3, borderRadius: '16px', boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)' }}>
         <CardContent sx={{ textAlign: 'center', py: 4 }}>
           <Box sx={{ position: 'relative', display: 'inline-block' }}>
             <Avatar
               src={profile.avatar}
               sx={{
-                width: 120,
-                height: 120,
+                width: 140,
+                height: 140,
                 margin: '0 auto',
                 background: colors.gradients.orangeToGold,
-                fontSize: '3rem',
+                fontSize: '3.5rem',
+                border: '4px solid #FFF',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
               }}
             >
-              {!profile.avatar && <PersonIcon sx={{ fontSize: '3rem' }} />}
+              {!profile.avatar && <PersonIcon sx={{ fontSize: '4rem' }} />}
             </Avatar>
             <IconButton
               sx={{
                 position: 'absolute',
-                bottom: 0,
-                right: 0,
+                bottom: 4,
+                right: 4,
                 bgcolor: colors.primary.main,
                 color: '#FFF',
-                '&:hover': { bgcolor: colors.primary.dark },
+                width: 44,
+                height: 44,
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+                '&:hover': {
+                  bgcolor: colors.primary.dark,
+                  transform: 'scale(1.05)',
+                },
+                transition: 'all 0.2s ease',
               }}
               onClick={() => fileInputRef.current?.click()}
             >
@@ -121,16 +146,16 @@ export default function AccountPage() {
             style={{ display: 'none' }}
             onChange={handleAvatarUpload}
           />
-          <Typography variant="caption" sx={{ display: 'block', mt: 2, color: colors.neutral.darkGray }}>
-            Click camera to upload photo
+          <Typography variant="caption" sx={{ display: 'block', mt: 2.5, color: colors.neutral.darkGray }}>
+            Click the camera icon to upload a photo
           </Typography>
         </CardContent>
       </Card>
 
       {/* Personal Info */}
-      <Card sx={{ mb: 3, borderRadius: '14px' }}>
-        <CardContent>
-          <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
+      <Card sx={{ mb: 3, borderRadius: '16px', boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)' }}>
+        <CardContent sx={{ p: 3 }}>
+          <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: colors.neutral.charcoal }}>
             Personal Information
           </Typography>
           <TextField
@@ -138,7 +163,7 @@ export default function AccountPage() {
             label="Name"
             value={profile.name}
             onChange={(e) => handleChange('name', e.target.value)}
-            sx={{ mb: 2 }}
+            sx={{ mb: 2.5 }}
           />
           <TextField
             fullWidth
@@ -146,21 +171,21 @@ export default function AccountPage() {
             type="number"
             value={profile.age || ''}
             onChange={(e) => handleChange('age', parseInt(e.target.value) || undefined)}
-            sx={{ mb: 2 }}
+            placeholder="Enter your age"
           />
         </CardContent>
       </Card>
 
       {/* Body Stats */}
-      <Card sx={{ mb: 3, borderRadius: '14px' }}>
-        <CardContent>
-          <Typography variant="h6" sx={{ fontWeight: 600, mb: 2 }}>
-            Body Stats
+      <Card sx={{ mb: 3, borderRadius: '16px', boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)' }}>
+        <CardContent sx={{ p: 3 }}>
+          <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: colors.neutral.charcoal }}>
+            Body Metrics
           </Typography>
 
-          <Box sx={{ mb: 2 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
-              <Typography variant="body2" sx={{ fontWeight: 500 }}>
+          <Box sx={{ mb: 3 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
+              <Typography variant="body2" sx={{ fontWeight: 600, color: colors.neutral.charcoal }}>
                 Height
               </Typography>
               <ToggleButtonGroup
@@ -168,6 +193,20 @@ export default function AccountPage() {
                 exclusive
                 onChange={(e, value) => value && handleChange('heightUnit', value)}
                 size="small"
+                sx={{
+                  '& .MuiToggleButton-root': {
+                    px: 2,
+                    fontWeight: 600,
+                    fontSize: '0.75rem',
+                    '&.Mui-selected': {
+                      bgcolor: colors.primary.main,
+                      color: '#FFF',
+                      '&:hover': {
+                        bgcolor: colors.primary.dark,
+                      },
+                    },
+                  },
+                }}
               >
                 <ToggleButton value="cm">cm</ToggleButton>
                 <ToggleButton value="ft">ft</ToggleButton>
@@ -179,12 +218,13 @@ export default function AccountPage() {
               value={profile.height || ''}
               onChange={(e) => handleChange('height', parseFloat(e.target.value) || undefined)}
               placeholder={profile.heightUnit === 'cm' ? '170' : '5.7'}
+              inputProps={{ step: '0.1' }}
             />
           </Box>
 
-          <Box sx={{ mb: 2 }}>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
-              <Typography variant="body2" sx={{ fontWeight: 500 }}>
+          <Box sx={{ mb: 3 }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
+              <Typography variant="body2" sx={{ fontWeight: 600, color: colors.neutral.charcoal }}>
                 Weight
               </Typography>
               <ToggleButtonGroup
@@ -192,6 +232,20 @@ export default function AccountPage() {
                 exclusive
                 onChange={(e, value) => value && handleChange('weightUnit', value)}
                 size="small"
+                sx={{
+                  '& .MuiToggleButton-root': {
+                    px: 2,
+                    fontWeight: 600,
+                    fontSize: '0.75rem',
+                    '&.Mui-selected': {
+                      bgcolor: colors.primary.main,
+                      color: '#FFF',
+                      '&:hover': {
+                        bgcolor: colors.primary.dark,
+                      },
+                    },
+                  },
+                }}
               >
                 <ToggleButton value="kg">kg</ToggleButton>
                 <ToggleButton value="lbs">lbs</ToggleButton>
@@ -203,6 +257,7 @@ export default function AccountPage() {
               value={profile.weight || ''}
               onChange={(e) => handleChange('weight', parseFloat(e.target.value) || undefined)}
               placeholder={profile.weightUnit === 'kg' ? '70' : '154'}
+              inputProps={{ step: '0.1' }}
             />
           </Box>
 
@@ -210,17 +265,21 @@ export default function AccountPage() {
             <Box
               sx={{
                 mt: 3,
-                p: 2,
-                borderRadius: '10px',
+                p: 3,
+                borderRadius: '14px',
                 background: colors.gradients.goldToAmber,
                 textAlign: 'center',
+                boxShadow: '0 2px 8px rgba(200, 169, 81, 0.3)',
               }}
             >
-              <Typography variant="caption" sx={{ color: colors.neutral.charcoal }}>
-                Body Mass Index (BMI)
+              <Typography variant="caption" sx={{ color: colors.neutral.charcoal, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                Body Mass Index
               </Typography>
-              <Typography variant="h4" sx={{ fontWeight: 700, color: colors.neutral.charcoal }}>
+              <Typography variant="h3" sx={{ fontWeight: 700, color: colors.neutral.charcoal, my: 1 }}>
                 {bmi}
+              </Typography>
+              <Typography variant="body2" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
+                {getBMICategory(bmi)}
               </Typography>
             </Box>
           )}
@@ -228,12 +287,18 @@ export default function AccountPage() {
       </Card>
 
       {/* Actions */}
-      <Box sx={{ display: 'flex', gap: 2 }}>
+      <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
         <Button
           fullWidth
           variant="contained"
           onClick={handleSave}
           disabled={!hasChanges}
+          sx={{
+            py: 1.5,
+            fontSize: '1rem',
+            fontWeight: 600,
+            boxShadow: hasChanges ? '0 4px 12px rgba(255, 140, 66, 0.3)' : 'none',
+          }}
         >
           Save Changes
         </Button>
@@ -241,9 +306,19 @@ export default function AccountPage() {
           fullWidth
           variant="outlined"
           onClick={handleReset}
-          disabled={!hasChanges}
+          sx={{
+            py: 1.5,
+            fontSize: '1rem',
+            fontWeight: 600,
+            borderColor: colors.primary.main,
+            color: colors.primary.main,
+            '&:hover': {
+              borderColor: colors.primary.dark,
+              bgcolor: 'rgba(255, 140, 66, 0.05)',
+            },
+          }}
         >
-          Reset
+          Reset Profile
         </Button>
       </Box>
     </Box>
@@ -259,8 +334,6 @@ function IconButton(props: any) {
         border: 'none',
         cursor: 'pointer',
         borderRadius: '50%',
-        width: 40,
-        height: 40,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

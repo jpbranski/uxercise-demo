@@ -104,7 +104,7 @@ export default function DevToolsPanel({
         UXERCISE DEV TOOLS
       </Box>
 
-      <Box sx={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
         <Button
           onClick={() => setDeviceMode('mobile')}
           sx={{
@@ -115,6 +115,7 @@ export default function DevToolsPanel({
             borderRadius: '6px',
             fontSize: '0.75rem',
             fontWeight: 600,
+            minWidth: 'auto',
             '&:hover': {
               background: deviceMode === 'mobile' ? '#FF8C42' : 'rgba(231, 207, 139, 0.1)',
               opacity: deviceMode === 'mobile' ? 0.9 : 1,
@@ -122,24 +123,6 @@ export default function DevToolsPanel({
           }}
         >
           MOBILE
-        </Button>
-        <Button
-          onClick={() => setDeviceMode('desktop')}
-          sx={{
-            background: deviceMode === 'desktop' ? '#FF8C42' : 'transparent',
-            color: deviceMode === 'desktop' ? '#FFF' : '#E7CF8B',
-            border: '1px solid #E7CF8B',
-            padding: '6px 12px',
-            borderRadius: '6px',
-            fontSize: '0.75rem',
-            fontWeight: 600,
-            '&:hover': {
-              background: deviceMode === 'desktop' ? '#FF8C42' : 'rgba(231, 207, 139, 0.1)',
-              opacity: deviceMode === 'desktop' ? 0.9 : 1,
-            },
-          }}
-        >
-          DESKTOP
         </Button>
 
         {deviceMode === 'mobile' && (
@@ -157,6 +140,7 @@ export default function DevToolsPanel({
               fontSize: '0.75rem',
               fontWeight: 600,
               height: '34px',
+              minWidth: '160px',
               '& .MuiOutlinedInput-notchedOutline': {
                 border: 'none',
               },
@@ -174,6 +158,26 @@ export default function DevToolsPanel({
         )}
 
         <Button
+          onClick={() => setDeviceMode('desktop')}
+          sx={{
+            background: deviceMode === 'desktop' ? '#FF8C42' : 'transparent',
+            color: deviceMode === 'desktop' ? '#FFF' : '#E7CF8B',
+            border: '1px solid #E7CF8B',
+            padding: '6px 12px',
+            borderRadius: '6px',
+            fontSize: '0.75rem',
+            fontWeight: 600,
+            minWidth: 'auto',
+            '&:hover': {
+              background: deviceMode === 'desktop' ? '#FF8C42' : 'rgba(231, 207, 139, 0.1)',
+              opacity: deviceMode === 'desktop' ? 0.9 : 1,
+            },
+          }}
+        >
+          DESKTOP
+        </Button>
+
+        <Button
           onClick={handleResetData}
           sx={{
             background: 'transparent',
@@ -183,6 +187,7 @@ export default function DevToolsPanel({
             borderRadius: '6px',
             fontSize: '0.75rem',
             fontWeight: 600,
+            minWidth: 'auto',
             '&:hover': {
               background: 'rgba(255, 140, 66, 0.1)',
             },

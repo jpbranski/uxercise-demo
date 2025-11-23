@@ -3,7 +3,7 @@
 const KEYS = {
   WORKOUTS: 'uxercise_demo_workouts_v1',
   LOGS: 'uxercise_demo_logs_v1',
-  PROFILE: 'uxercise_demo_profile_v1',
+  PROFILE: 'ux_profile_v1',
   SETTINGS: 'uxercise_demo_settings_v1',
 } as const;
 
