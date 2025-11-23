@@ -58,7 +58,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 alignItems: 'center',
                 minHeight: '100vh',
                 background: '#E4E4E4',
-                padding: '40px 20px',
+                padding: showDevTools ? '96px 20px 40px' : '40px 20px',
               }}
             >
               <div
@@ -92,17 +92,17 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               minHeight: '100vh',
               display: 'flex',
               flexDirection: 'column',
-              background: 'var(--bg)'
+              background: 'var(--bg)',
+              paddingTop: showDevTools ? '56px' : '0',
             }}>
               <div
                 className="desktop-mode"
                 style={{
-                  maxWidth: '540px',
+                  maxWidth: '720px',
                   margin: '0 auto',
                   width: '100%',
                   flex: 1,
                   paddingBottom: 'calc(var(--bottom-nav-height, 72px) + 24px)',
-                  overflowY: 'auto',
                 }}
               >
                 {children}

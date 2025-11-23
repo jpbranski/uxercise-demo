@@ -26,7 +26,8 @@ export const colors = {
     offWhite: '#F6F6F6',
   },
   gradients: {
-    orangeToGold: 'linear-gradient(135deg, #FF8C42 0%, #C8A951 100%)',
+    orangeToGold: 'linear-gradient(90deg, #FF8C42 0%, #C89A2F 100%)',
+    orangeToGoldHover: 'linear-gradient(90deg, #E57A32 0%, #B78A27 100%)',
     goldToAmber: 'linear-gradient(135deg, #C8A951 0%, #D4B969 50%, #E7CF8B 100%)',
     darkOverlay: 'linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.85) 100%)',
   },
@@ -117,10 +118,9 @@ const theme = createTheme({
         },
         contained: {
           background: colors.gradients.orangeToGold,
-          color: '#FFFFFF',
+          color: '#1A1A1A',
           '&:hover': {
-            background: colors.gradients.orangeToGold,
-            opacity: 0.9,
+            background: colors.gradients.orangeToGoldHover,
           },
         },
       },
