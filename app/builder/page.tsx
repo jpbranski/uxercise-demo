@@ -19,8 +19,6 @@ import {
   FormControl,
   InputLabel,
   Grid,
-  ToggleButton,
-  ToggleButtonGroup,
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -62,7 +60,7 @@ function BuilderContent() {
       if (existing) {
         setWorkout(existing);
         if (shouldPlay) {
-          router.push(`/demo/builder?id=${workoutId}&play=true`);
+          router.push(`/builder/player?id=${workoutId}`);
         }
       }
     }
@@ -82,7 +80,7 @@ function BuilderContent() {
         createdAt: new Date().toISOString(),
       };
       saveWorkouts([...workouts, newWorkout]);
-      router.push(`/demo/builder?id=${newWorkout.id}`);
+      router.push(`/builder?id=${newWorkout.id}`);
     }
     setHasChanges(false);
     alert('Workout saved!');
@@ -193,7 +191,7 @@ function BuilderContent() {
     if (hasChanges) {
       handleSave();
     }
-    router.push(`/demo/builder/player?id=${workoutId || 'new'}`);
+    router.push(`/builder/player?id=${workoutId || 'new'}`);
   };
 
   return (

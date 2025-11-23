@@ -13,14 +13,14 @@ export default function BottomNav() {
   const router = useRouter();
 
   const navItems = [
-    { label: 'Dashboard', value: '/demo', icon: <DashboardIcon /> },
-    { label: 'Builder', value: '/demo/builder', icon: <FitnessCenterIcon /> },
-    { label: 'Workouts', value: '/demo/workouts', icon: <ListAltIcon /> },
-    { label: 'Log', value: '/demo/log', icon: <HistoryIcon /> },
-    { label: 'Account', value: '/demo/account', icon: <PersonIcon /> },
+    { label: 'Dashboard', value: '/', icon: <DashboardIcon /> },
+    { label: 'Builder', value: '/builder', icon: <FitnessCenterIcon /> },
+    { label: 'Workouts', value: '/workouts', icon: <ListAltIcon /> },
+    { label: 'Log', value: '/log', icon: <HistoryIcon /> },
+    { label: 'Account', value: '/account', icon: <PersonIcon /> },
   ];
 
-  const currentValue = navItems.find(item => pathname === item.value)?.value || '/demo';
+  const currentValue = navItems.find(item => pathname === item.value)?.value || '/';
 
   return (
     <Paper

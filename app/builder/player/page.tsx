@@ -102,7 +102,7 @@ function PlayerContent() {
     saveLogs([log, ...logs]);
 
     alert(`Workout completed in ${duration} minutes!`);
-    router.push('/demo/log');
+    router.push('/log');
   };
 
   const handleClose = () => {

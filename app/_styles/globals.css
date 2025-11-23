@@ -64,28 +64,6 @@ body {
   background: #B0923A;
 }
 
-/* Prototype Toolbar */
-.prototype-toolbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 100%);
-  color: #FFFFFF;
-  padding: 12px 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  border-bottom: 2px solid #FF8C42;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.prototype-toolbar-title {
-  font-weight: 600;
-  font-size: 0.875rem;
-  color: #E7CF8B;
-  margin-right: auto;
-}
-
 /* Desktop Mode */
 .desktop-mode {
   max-width: 1024px;
