@@ -28,6 +28,7 @@
   --shadow-md: rgba(0, 0, 0, 0.12);
   --shadow-lg: rgba(0, 0, 0, 0.16);
   --bottom-nav-height: 72px;
+  --devtools-height: 56px;
 }
 
 .theme-dark {
@@ -50,6 +51,7 @@
   --shadow-md: rgba(0, 0, 0, 0.3);
   --shadow-lg: rgba(0, 0, 0, 0.4);
   --bottom-nav-height: 72px;
+  --devtools-height: 56px;
 }
 
 html,
@@ -120,7 +122,7 @@ body {
 
 /* Gradient backgrounds */
 .gradient-orange-gold {
-  background: linear-gradient(135deg, #FF8C42 0%, #C8A951 100%);
+  background: linear-gradient(90deg, #FF8C42 0%, #C89A2F 100%);
 }
 
 .gradient-gold-amber {
@@ -162,8 +164,8 @@ body {
 }
 
 .card-gradient {
-  background: linear-gradient(135deg, #FF8C42 0%, #C8A951 100%);
-  color: #FFFFFF;
+  background: linear-gradient(90deg, #FF8C42 0%, #C89A2F 100%);
+  color: #1A1A1A;
 }
 
 /* Button styles */
@@ -178,12 +180,12 @@ body {
   border: none;
   cursor: pointer;
   transition: all 0.15s ease;
-  background: linear-gradient(135deg, #FF8C42 0%, #C8A951 100%);
-  color: #FFFFFF;
+  background: linear-gradient(90deg, #FF8C42 0%, #C89A2F 100%);
+  color: #1A1A1A;
 }
 
 .btn:hover {
-  opacity: 0.9;
+  background: linear-gradient(90deg, #E57A32 0%, #B78A27 100%);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -269,7 +271,7 @@ input[type='number'] {
 
 /* Utility classes */
 .text-gradient {
-  background: linear-gradient(135deg, #FF8C42 0%, #C8A951 100%);
+  background: linear-gradient(90deg, #FF8C42 0%, #C89A2F 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

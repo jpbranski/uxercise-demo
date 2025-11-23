@@ -35,7 +35,7 @@ export default function BottomNav({ deviceMode }: BottomNavProps) {
         left: deviceMode === 'desktop' ? '50%' : 0,
         right: deviceMode === 'desktop' ? 'auto' : 0,
         transform: deviceMode === 'desktop' ? 'translateX(-50%)' : 'none',
-        width: deviceMode === 'desktop' ? '540px' : 'auto',
+        width: deviceMode === 'desktop' ? '720px' : 'auto',
         maxWidth: deviceMode === 'desktop' ? '100%' : 'auto',
         zIndex: 1000,
         bgcolor: 'var(--nav-bg)',

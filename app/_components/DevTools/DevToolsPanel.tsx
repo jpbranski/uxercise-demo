@@ -1,9 +1,6 @@
 'use client';
 
-import { useState } from 'react';
-import { Box, Button, IconButton, Select, MenuItem } from '@mui/material';
-import SettingsIcon from '@mui/icons-material/Settings';
-import CloseIcon from '@mui/icons-material/Close';
+import { Box, Button, Select, MenuItem } from '@mui/material';
 import { resetDemoData } from '@/app/_lib/storage';
 import { getAppVersion } from '@/app/_lib/tauri';
 
@@ -35,8 +32,6 @@ export default function DevToolsPanel({
   devicePreset,
   setDevicePreset,
 }: DevToolsPanelProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   const handleResetData = () => {
     if (confirm('Are you sure you want to reset all demo data? This cannot be undone.')) {
       resetDemoData();
@@ -44,37 +39,7 @@ export default function DevToolsPanel({
     }
   };
 
-  if (!isExpanded) {
-    // Collapsed: Show floating button in top-right corner
-    return (
-      <Box
-        sx={{
-          position: 'fixed',
-          top: 16,
-          right: 16,
-          zIndex: 2000,
-        }}
-      >
-        <IconButton
-          onClick={() => setIsExpanded(true)}
-          sx={{
-            width: 48,
-            height: 48,
-            background: 'linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 100%)',
-            color: '#E7CF8B',
-            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.3)',
-            '&:hover': {
-              background: 'linear-gradient(135deg, #2A2A2A 0%, #3A3A3A 100%)',
-            },
-          }}
-        >
-          <SettingsIcon />
-        </IconButton>
-      </Box>
-    );
-  }
-
-  // Expanded: Show full toolbar
+  // Always show full toolbar - permanent, no toggling
   return (
     <Box
       sx={{
@@ -207,17 +172,6 @@ export default function DevToolsPanel({
           v{getAppVersion()}
         </Box>
       </Box>
-
-      <IconButton
-        onClick={() => setIsExpanded(false)}
-        sx={{
-          color: '#FFF',
-          width: 32,
-          height: 32,
-        }}
-      >
-        <CloseIcon fontSize="small" />
-      </IconButton>
     </Box>
   );
 }
