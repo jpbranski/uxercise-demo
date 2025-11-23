@@ -106,12 +106,12 @@ export default function AccountPage() {
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: 'var(--bg)', p: 3 }}>
       {/* Header */}
-      <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: colors.neutral.charcoal }}>
+      <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: 'var(--text)' }}>
         My Profile
       </Typography>
 
       {/* Avatar Card */}
-      <Card sx={{ mb: 3, borderRadius: '16px', boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)' }}>
+      <Card sx={{ mb: 3, borderRadius: '16px', bgcolor: 'var(--card-bg)', boxShadow: '0 2px 12px var(--shadow-sm)' }}>
         <CardContent sx={{ textAlign: 'center', py: 4 }}>
           <Box sx={{ position: 'relative', display: 'inline-block' }}>
             <Avatar
@@ -156,16 +156,16 @@ export default function AccountPage() {
             style={{ display: 'none' }}
             onChange={handleAvatarUpload}
           />
-          <Typography variant="caption" sx={{ display: 'block', mt: 2.5, color: colors.neutral.darkGray }}>
+          <Typography variant="caption" sx={{ display: 'block', mt: 2.5, color: 'var(--text-secondary)' }}>
             Click the camera icon to upload a photo
           </Typography>
         </CardContent>
       </Card>
 
       {/* Personal Info */}
-      <Card sx={{ mb: 3, borderRadius: '16px', boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)' }}>
+      <Card sx={{ mb: 3, borderRadius: '16px', bgcolor: 'var(--card-bg)', boxShadow: '0 2px 12px var(--shadow-sm)' }}>
         <CardContent sx={{ p: 3 }}>
-          <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: colors.neutral.charcoal }}>
+          <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: 'var(--text)' }}>
             Personal Information
           </Typography>
           <TextField
@@ -187,15 +187,15 @@ export default function AccountPage() {
       </Card>
 
       {/* Body Stats */}
-      <Card sx={{ mb: 3, borderRadius: '16px', boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)' }}>
+      <Card sx={{ mb: 3, borderRadius: '16px', bgcolor: 'var(--card-bg)', boxShadow: '0 2px 12px var(--shadow-sm)' }}>
         <CardContent sx={{ p: 3 }}>
-          <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: colors.neutral.charcoal }}>
+          <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: 'var(--text)' }}>
             Body Metrics
           </Typography>
 
           <Box sx={{ mb: 3 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
-              <Typography variant="body2" sx={{ fontWeight: 600, color: colors.neutral.charcoal }}>
+              <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text)' }}>
                 Height
               </Typography>
               <ToggleButtonGroup
@@ -234,7 +234,7 @@ export default function AccountPage() {
 
           <Box sx={{ mb: 3 }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1.5 }}>
-              <Typography variant="body2" sx={{ fontWeight: 600, color: colors.neutral.charcoal }}>
+              <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text)' }}>
                 Weight
               </Typography>
               <ToggleButtonGroup
@@ -279,16 +279,16 @@ export default function AccountPage() {
                 borderRadius: '14px',
                 background: colors.gradients.goldToAmber,
                 textAlign: 'center',
-                boxShadow: '0 2px 8px rgba(200, 169, 81, 0.3)',
+                boxShadow: '0 2px 8px var(--shadow-md)',
               }}
             >
-              <Typography variant="caption" sx={{ color: colors.neutral.charcoal, fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              <Typography variant="caption" sx={{ color: '#1A1A1A', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                 Body Mass Index
               </Typography>
-              <Typography variant="h3" sx={{ fontWeight: 700, color: colors.neutral.charcoal, my: 1 }}>
+              <Typography variant="h3" sx={{ fontWeight: 700, color: '#1A1A1A', my: 1 }}>
                 {bmi}
               </Typography>
-              <Typography variant="body2" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
+              <Typography variant="body2" sx={{ color: '#2A2A2A', fontWeight: 500 }}>
                 {getBMICategory(bmi)}
               </Typography>
             </Box>
@@ -297,13 +297,13 @@ export default function AccountPage() {
       </Card>
 
       {/* Appearance */}
-      <Card sx={{ mb: 3, borderRadius: '16px', boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)' }}>
+      <Card sx={{ mb: 3, borderRadius: '16px', bgcolor: 'var(--card-bg)', boxShadow: '0 2px 12px var(--shadow-sm)' }}>
         <CardContent sx={{ p: 3 }}>
-          <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: colors.neutral.charcoal }}>
+          <Typography variant="h6" sx={{ fontWeight: 600, mb: 3, color: 'var(--text)' }}>
             Appearance
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            <Typography variant="body2" sx={{ fontWeight: 600, color: colors.neutral.charcoal }}>
+            <Typography variant="body2" sx={{ fontWeight: 600, color: 'var(--text)' }}>
               Theme
             </Typography>
             <ToggleButtonGroup

@@ -74,9 +74,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                     width: '100%',
                     height: '100%',
                     position: 'relative',
+                    overflowY: 'auto',
                   }}
                 >
-                  <div style={{ paddingBottom: '60px', minHeight: '100%' }}>
+                  <div style={{
+                    paddingBottom: 'calc(var(--bottom-nav-height, 72px) + 24px)',
+                    minHeight: '100%'
+                  }}>
                     {children}
                   </div>
                   <BottomNav deviceMode={deviceMode} />
@@ -84,7 +88,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               </div>
             </div>
           ) : (
-            <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+            <div style={{
+              minHeight: '100vh',
+              display: 'flex',
+              flexDirection: 'column',
+              background: 'var(--bg)'
+            }}>
               <div
                 className="desktop-mode"
                 style={{
@@ -92,7 +101,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   margin: '0 auto',
                   width: '100%',
                   flex: 1,
-                  paddingBottom: '80px',
+                  paddingBottom: 'calc(var(--bottom-nav-height, 72px) + 24px)',
+                  overflowY: 'auto',
                 }}
               >
                 {children}

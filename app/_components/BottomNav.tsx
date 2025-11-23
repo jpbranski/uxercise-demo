@@ -38,7 +38,8 @@ export default function BottomNav({ deviceMode }: BottomNavProps) {
         width: deviceMode === 'desktop' ? '540px' : 'auto',
         maxWidth: deviceMode === 'desktop' ? '100%' : 'auto',
         zIndex: 1000,
-        borderTop: '1px solid #E4E4E4',
+        bgcolor: 'var(--nav-bg)',
+        borderTop: '1px solid var(--nav-border)',
       }}
       elevation={3}
     >
@@ -49,10 +50,12 @@ export default function BottomNav({ deviceMode }: BottomNavProps) {
         }}
         showLabels
         sx={{
+          bgcolor: 'var(--nav-bg)',
           '& .MuiBottomNavigationAction-root': {
             minWidth: 'auto',
+            color: 'var(--text-secondary)',
             '&.Mui-selected': {
-              color: '#FF8C42',
+              color: 'var(--accent-orange)',
             },
           },
         }}
