@@ -24,6 +24,7 @@
   --nav-icon-active: #FF8C42;
   --input-bg: #FFFFFF;
   --input-border: #E4E4E4;
+  --input-border-hover: #b5b5b5;
   --input-placeholder: #999999;
   --accent-orange: #FF8C42;
   --accent-orange-dark: #E67A35;
@@ -64,6 +65,7 @@
   --nav-icon-active: #F77C32;
   --input-bg: #1A1A1A;
   --input-border: #2A2A2A;
+  --input-border-hover: #666;
   --input-placeholder: #666666;
   --accent-orange: #F77C32;
   --accent-orange-dark: #E06A25;

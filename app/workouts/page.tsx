@@ -111,9 +111,25 @@ export default function WorkoutsPage() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon sx={{ color: 'var(--text-secondary)' }} />
               </InputAdornment>
             ),
+          }}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: 'var(--input-border)',
+              },
+              '&:hover fieldset': {
+                borderColor: 'var(--input-border-hover)',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: 'var(--accent-orange)',
+              },
+            },
+            input: {
+              color: 'var(--text)',
+            },
           }}
         />
         <IconButton

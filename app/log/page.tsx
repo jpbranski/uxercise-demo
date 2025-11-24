@@ -138,9 +138,25 @@ export default function LogPage() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           InputProps={{
-            startAdornment: <SearchIcon sx={{ mr: 1, color: 'var(--muted-text)' }} />,
+            startAdornment: <SearchIcon sx={{ mr: 1, color: 'var(--text-muted)' }} />,
           }}
-          sx={{ mb: 2 }}
+          sx={{
+            mb: 2,
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: 'var(--input-border)',
+              },
+              '&:hover fieldset': {
+                borderColor: 'var(--input-border-hover)',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: 'var(--accent-orange)',
+              },
+            },
+            input: {
+              color: 'var(--text)',
+            },
+          }}
         />
         <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
           {['all', 'week', 'month'].map(range => (

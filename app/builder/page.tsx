@@ -296,7 +296,21 @@ function BuilderContent() {
               setWorkout({ ...workout, name: e.target.value });
               setHasChanges(true);
             }}
-            sx={{ mb: 2, '& input': { fontSize: '1.5rem', fontWeight: 600 } }}
+            sx={{
+              mb: 2,
+              '& input': { fontSize: '1.5rem', fontWeight: 600, color: 'var(--text)' },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'var(--input-border)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'var(--input-border-hover)',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'var(--accent-orange)',
+                },
+              },
+            }}
           />
 
           <FormControl fullWidth sx={{ mb: 2 }}>
@@ -361,7 +375,7 @@ function BuilderContent() {
           <Card key={exercise.id} sx={{ mb: 2, borderRadius: '14px', bgcolor: 'var(--card-bg)' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                <DragIndicatorIcon sx={{ color: 'var(--muted-text)', cursor: 'grab' }} />
+                <DragIndicatorIcon sx={{ color: 'var(--text-muted)', cursor: 'grab' }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, flex: 1 }}>
                   {idx + 1}. {exercise.name}
                 </Typography>
@@ -605,6 +619,18 @@ function BuilderContent() {
                 mb: 2.5,
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
+                  '& fieldset': {
+                    borderColor: 'var(--input-border)',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: 'var(--input-border-hover)',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'var(--accent-orange)',
+                  },
+                },
+                input: {
+                  color: 'var(--text)',
                 },
               }}
             />
