@@ -29,7 +29,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import { loadWorkouts, saveWorkouts, Workout, Exercise, Set } from '../_lib/storage';
 import { EXERCISES, BODY_PARTS, EQUIPMENT, TAGS, ExerciseTemplate } from '../_data/exercises';
 import { WORKOUT_TEMPLATES } from '../_data/templates';
-import { colors } from '../_theme/theme';
 import EditSetModal from '../_components/EditSetModal';
 
 function BuilderContent() {
@@ -216,7 +215,7 @@ function BuilderContent() {
             color: 'var(--text)',
             '&:hover': {
               borderColor: 'var(--accent-orange)',
-              bgcolor: 'rgba(255, 140, 66, 0.05)',
+              bgcolor: 'var(--accent-orange-bg-light)',
             },
           }}
         >
@@ -233,7 +232,7 @@ function BuilderContent() {
             color: 'var(--text)',
             '&:hover': {
               borderColor: 'var(--accent-orange)',
-              bgcolor: 'rgba(255, 140, 66, 0.05)',
+              bgcolor: 'var(--accent-orange-bg-light)',
             },
           }}
         >
@@ -346,8 +345,8 @@ function BuilderContent() {
                   setHasChanges(true);
                 }}
                 sx={{
-                  bgcolor: workout.tags.includes(tag) ? colors.primary.main : 'var(--surface)',
-                  color: workout.tags.includes(tag) ? '#FFF' : 'var(--text)',
+                  bgcolor: workout.tags.includes(tag) ? 'var(--accent-orange)' : 'var(--surface)',
+                  color: workout.tags.includes(tag) ? 'var(--btn-primary-text)' : 'var(--text)',
                   cursor: 'pointer',
                 }}
               />
@@ -526,8 +525,8 @@ function BuilderContent() {
                       transition: 'all 0.2s ease',
                       border: '1px solid transparent',
                       '&:hover': {
-                        boxShadow: '0 4px 16px rgba(255, 140, 66, 0.2)',
-                        borderColor: colors.primary.main,
+                        boxShadow: '0 4px 16px var(--shadow-md)',
+                        borderColor: 'var(--accent-orange)',
                         transform: 'translateY(-2px)',
                       },
                     }}
@@ -542,7 +541,7 @@ function BuilderContent() {
                           label={template.difficulty}
                           size="small"
                           sx={{
-                            bgcolor: colors.gradients.goldToAmber,
+                            bgcolor: 'linear-gradient(135deg, var(--accent-gold-1) 0%, var(--accent-gold-2) 50%, var(--accent-gold-3) 100%)',
                             fontWeight: 600,
                           }}
                         />
@@ -712,8 +711,8 @@ function BuilderContent() {
                     bgcolor: 'var(--card-bg)',
                     '&:hover': {
                       bgcolor: 'var(--surface)',
-                      borderColor: colors.primary.main,
-                      boxShadow: '0 2px 8px rgba(255, 140, 66, 0.15)',
+                      borderColor: 'var(--accent-orange)',
+                      boxShadow: '0 2px 8px var(--shadow-sm)',
                     },
                   }}
                   onClick={() => handleAddExercise(ex)}

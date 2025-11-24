@@ -18,7 +18,6 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import CheckIcon from '@mui/icons-material/Check';
 import { loadWorkouts, saveLogs, loadLogs, Workout, WorkoutLog } from '../../_lib/storage';
-import { colors } from '../../_theme/theme';
 
 function PlayerContent() {
   const router = useRouter();
@@ -121,8 +120,8 @@ function PlayerContent() {
     <Box
       sx={{
         minHeight: '100vh',
-        background: colors.gradients.darkOverlay,
-        color: '#FFF',
+        background: 'var(--player-overlay-bg)',
+        color: 'var(--player-text)',
         display: 'flex',
         flexDirection: 'column',
       }}
@@ -134,13 +133,13 @@ function PlayerContent() {
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+          borderBottom: '1px solid var(--player-border)',
         }}
       >
         <Typography variant="h6" sx={{ fontWeight: 600 }}>
           {workout.name}
         </Typography>
-        <IconButton onClick={handleClose} sx={{ color: '#FFF' }}>
+        <IconButton onClick={handleClose} sx={{ color: 'var(--player-text)' }}>
           <CloseIcon />
         </IconButton>
       </Box>
@@ -151,9 +150,9 @@ function PlayerContent() {
         value={progress}
         sx={{
           height: 2,
-          bgcolor: 'rgba(255, 255, 255, 0.1)',
+          bgcolor: 'var(--player-button-bg)',
           '& .MuiLinearProgress-bar': {
-            bgcolor: colors.primary.main,
+            bgcolor: 'var(--accent-orange)',
           },
         }}
       />
@@ -162,13 +161,13 @@ function PlayerContent() {
       <Box sx={{ flex: 1, p: 3, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
         {/* Exercise Info */}
         <Box sx={{ textAlign: 'center', mb: 4, width: '100%' }}>
-          <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+          <Typography variant="caption" sx={{ color: 'var(--player-text-muted)' }}>
             Exercise {currentExerciseIdx + 1} of {workout.exercises.length}
           </Typography>
           <Typography variant="h4" sx={{ fontWeight: 700, my: 2 }}>
             {currentExercise.name}
           </Typography>
-          <Typography variant="h6" sx={{ color: colors.gold.light }}>
+          <Typography variant="h6" sx={{ color: 'var(--accent-gold-3)' }}>
             Set {currentSetIdx + 1} of {currentExercise.sets.length}
           </Typography>
         </Box>
@@ -179,7 +178,7 @@ function PlayerContent() {
             width: 200,
             height: 200,
             borderRadius: '50%',
-            border: `8px solid ${colors.primary.main}`,
+            border: '8px solid var(--accent-orange)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -196,7 +195,7 @@ function PlayerContent() {
           sx={{
             width: '100%',
             maxWidth: 400,
-            bgcolor: 'rgba(255, 255, 255, 0.05)',
+            bgcolor: 'var(--player-card-bg)',
             backdropFilter: 'blur(10px)',
             mb: 4,
           }}
@@ -204,29 +203,29 @@ function PlayerContent() {
           <CardContent>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
               <Box sx={{ textAlign: 'center', flex: 1 }}>
-                <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                <Typography variant="caption" sx={{ color: 'var(--player-text-muted)' }}>
                   Type
                 </Typography>
-                <Typography variant="h6" sx={{ color: colors.gold.light, fontWeight: 600 }}>
+                <Typography variant="h6" sx={{ color: 'var(--accent-gold-3)', fontWeight: 600 }}>
                   {currentSet?.type}
                 </Typography>
               </Box>
               {currentSet?.reps && (
                 <Box sx={{ textAlign: 'center', flex: 1 }}>
-                  <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                  <Typography variant="caption" sx={{ color: 'var(--player-text-muted)' }}>
                     Reps
                   </Typography>
-                  <Typography variant="h6" sx={{ color: '#FFF', fontWeight: 600 }}>
+                  <Typography variant="h6" sx={{ color: 'var(--player-text)', fontWeight: 600 }}>
                     {currentSet.reps}
                   </Typography>
                 </Box>
               )}
               {currentSet?.weight && (
                 <Box sx={{ textAlign: 'center', flex: 1 }}>
-                  <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+                  <Typography variant="caption" sx={{ color: 'var(--player-text-muted)' }}>
                     Weight
                   </Typography>
-                  <Typography variant="h6" sx={{ color: '#FFF', fontWeight: 600 }}>
+                  <Typography variant="h6" sx={{ color: 'var(--player-text)', fontWeight: 600 }}>
                     {currentSet.weight} lbs
                   </Typography>
                 </Box>
@@ -238,10 +237,10 @@ function PlayerContent() {
         {/* Next Up */}
         {nextExercise && (
           <Box sx={{ textAlign: 'center', mb: 3 }}>
-            <Typography variant="caption" sx={{ color: 'rgba(255, 255, 255, 0.7)' }}>
+            <Typography variant="caption" sx={{ color: 'var(--player-text-muted)' }}>
               Next Up:
             </Typography>
-            <Typography variant="body1" sx={{ color: colors.gold.light, fontWeight: 600 }}>
+            <Typography variant="body1" sx={{ color: 'var(--accent-gold-3)', fontWeight: 600 }}>
               {nextExercise.name}
             </Typography>
           </Box>
@@ -253,9 +252,9 @@ function PlayerContent() {
             onClick={handlePrevious}
             disabled={currentExerciseIdx === 0 && currentSetIdx === 0}
             sx={{
-              bgcolor: 'rgba(255, 255, 255, 0.1)',
-              color: '#FFF',
-              '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.2)' },
+              bgcolor: 'var(--player-button-bg)',
+              color: 'var(--player-text)',
+              '&:hover': { bgcolor: 'var(--player-button-hover)' },
               '&:disabled': { opacity: 0.3 },
             }}
           >
@@ -272,8 +271,8 @@ function PlayerContent() {
             sx={{
               width: 80,
               height: 80,
-              background: colors.gradients.orangeToGold,
-              color: '#FFF',
+              background: 'var(--btn-primary-bg)',
+              color: 'var(--btn-primary-text)',
               '&:hover': { opacity: 0.9 },
             }}
           >
@@ -283,9 +282,9 @@ function PlayerContent() {
           <IconButton
             onClick={handleNext}
             sx={{
-              bgcolor: 'rgba(255, 255, 255, 0.1)',
-              color: '#FFF',
-              '&:hover': { bgcolor: 'rgba(255, 255, 255, 0.2)' },
+              bgcolor: 'var(--player-button-bg)',
+              color: 'var(--player-text)',
+              '&:hover': { bgcolor: 'var(--player-button-hover)' },
             }}
           >
             <SkipNextIcon />
@@ -298,9 +297,9 @@ function PlayerContent() {
             variant="outlined"
             onClick={handleNext}
             sx={{
-              color: '#FFF',
-              borderColor: 'rgba(255, 255, 255, 0.3)',
-              '&:hover': { borderColor: '#FFF', bgcolor: 'rgba(255, 255, 255, 0.1)' },
+              color: 'var(--player-text)',
+              borderColor: 'var(--player-input-border)',
+              '&:hover': { borderColor: 'var(--player-text)', bgcolor: 'var(--player-button-bg)' },
             }}
           >
             Complete Set
@@ -311,7 +310,7 @@ function PlayerContent() {
                 variant="contained"
                 startIcon={<CheckIcon />}
                 onClick={handleFinish}
-                sx={{ background: colors.gradients.orangeToGold }}
+                sx={{ background: 'var(--btn-primary-bg)' }}
               >
                 Finish Workout
               </Button>
@@ -320,7 +319,7 @@ function PlayerContent() {
       </Box>
 
       {/* Notes */}
-      <Box sx={{ p: 3, borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
+      <Box sx={{ p: 3, borderTop: '1px solid var(--player-border)' }}>
         <TextField
           fullWidth
           multiline
@@ -330,13 +329,13 @@ function PlayerContent() {
           onChange={(e) => setNotes(e.target.value)}
           sx={{
             '& .MuiOutlinedInput-root': {
-              color: '#FFF',
-              '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.3)' },
-              '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.5)' },
+              color: 'var(--player-text)',
+              '& fieldset': { borderColor: 'var(--player-input-border)' },
+              '&:hover fieldset': { borderColor: 'var(--player-input-border-hover)' },
               '&.Mui-focused fieldset': { borderColor: 'var(--accent-orange)' },
             },
             '& .MuiInputBase-input::placeholder': {
-              color: 'rgba(255, 255, 255, 0.6)',
+              color: 'var(--player-placeholder)',
               opacity: 1,
             },
           }}

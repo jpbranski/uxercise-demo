@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 justifyContent: 'center',
                 alignItems: 'center',
                 minHeight: '100vh',
-                background: '#E4E4E4',
+                background: 'var(--border)',
                 padding: showDevTools ? '96px 20px 40px' : '40px 20px',
               }}
             >
