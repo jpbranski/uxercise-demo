@@ -103,7 +103,7 @@ export default function AccountPage() {
   const bmi = calculateBMI();
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'var(--bg)', p: 3 }}>
+    <Box sx={{ bgcolor: 'var(--bg)' }}>
       {/* Header */}
       <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: 'var(--text)' }}>
         My Profile

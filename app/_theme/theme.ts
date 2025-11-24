@@ -125,9 +125,19 @@ const theme = createTheme({
         },
       },
     },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'var(--surface)',
+          color: 'var(--text)',
+        },
+      },
+    },
     MuiCard: {
       styleOverrides: {
         root: {
+          backgroundColor: 'var(--card-bg)',
+          color: 'var(--text)',
           borderRadius: '14px',
           boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
           transition: 'all 0.2s ease',
@@ -137,12 +147,71 @@ const theme = createTheme({
         },
       },
     },
+    MuiDialog: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: 'var(--surface)',
+          color: 'var(--text)',
+        },
+      },
+    },
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: 'var(--surface)',
+          color: 'var(--text)',
+        },
+      },
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: 'var(--text)',
+          '&:hover': {
+            backgroundColor: 'var(--tile-bg)',
+          },
+        },
+      },
+    },
+    MuiPopover: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: 'var(--surface)',
+          color: 'var(--text)',
+        },
+      },
+    },
     MuiTextField: {
       styleOverrides: {
         root: {
           '& .MuiOutlinedInput-root': {
             borderRadius: '8px',
+            backgroundColor: 'var(--input-bg)',
+            color: 'var(--text)',
+            '& fieldset': {
+              borderColor: 'var(--input-border)',
+            },
+            '&:hover fieldset': {
+              borderColor: 'var(--input-border-hover)',
+            },
+            '&.Mui-focused fieldset': {
+              borderColor: 'var(--accent-orange)',
+            },
           },
+          '& .MuiInputLabel-root': {
+            color: 'var(--text-secondary)',
+          },
+          '& input': {
+            color: 'var(--text)',
+          },
+        },
+      },
+    },
+    MuiSelect: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'var(--input-bg)',
+          color: 'var(--text)',
         },
       },
     },

@@ -66,29 +66,32 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 style={{
                   width: `${devicePreset.width}px`,
                   height: `${devicePreset.height}px`,
-                  display: 'flex',
-                  flexDirection: 'column',
                   overflow: 'hidden',
                 }}
               >
                 <div
                   className="device-screen"
                   style={{
-                    flex: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: '100%',
                     width: '100%',
-                    position: 'relative',
-                    overflowY: 'auto',
-                    overflowX: 'hidden',
+                    background: 'var(--bg)',
                   }}
                 >
-                  <div style={{
-                    paddingBottom: 'calc(var(--bottom-nav-height, 72px) + 24px)',
-                    minHeight: '100%'
-                  }}>
+                  <div
+                    style={{
+                      flex: 1,
+                      overflowY: 'auto',
+                      overflowX: 'hidden',
+                      padding: '16px',
+                      paddingBottom: 'calc(var(--bottom-nav-height, 72px) + 16px)',
+                    }}
+                  >
                     {children}
                   </div>
+                  <BottomNav deviceMode={deviceMode} />
                 </div>
-                <BottomNav deviceMode={deviceMode} />
               </div>
             </div>
           ) : (
