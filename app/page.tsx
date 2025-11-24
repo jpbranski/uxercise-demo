@@ -62,10 +62,10 @@ export default function DashboardPage() {
           <FitnessCenterIcon sx={{ color: '#FFF', fontSize: 28 }} />
         </Box>
         <Box>
-          <Typography variant="h5" sx={{ fontWeight: 700, color: colors.neutral.charcoal }}>
+          <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text)' }}>
             Welcome Back
           </Typography>
-          <Typography variant="body2" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-secondary)', fontWeight: 500 }}>
             {profile.name}
           </Typography>
         </Box>
@@ -134,18 +134,18 @@ export default function DashboardPage() {
         sx={{
           mb: 3,
           borderRadius: '18px',
-          background: 'linear-gradient(135deg, #FFFFFF 0%, #F9F9F9 100%)',
-          boxShadow: '0 2px 16px rgba(0, 0, 0, 0.08)',
-          border: '1px solid rgba(255, 140, 66, 0.1)',
+          background: 'var(--card-bg)',
+          boxShadow: '0 2px 16px var(--shadow-md)',
+          border: '1px solid var(--border)',
           transition: 'all 0.2s ease',
           '&:hover': {
-            boxShadow: '0 4px 20px rgba(255, 140, 66, 0.15)',
+            boxShadow: '0 4px 20px var(--shadow-lg)',
             transform: 'translateY(-2px)',
           },
         }}
       >
         <CardContent sx={{ textAlign: 'center', py: 4, px: 3 }}>
-          <Typography variant="h6" sx={{ mb: 2.5, fontWeight: 700, color: colors.neutral.charcoal }}>
+          <Typography variant="h6" sx={{ mb: 2.5, fontWeight: 700, color: 'var(--text)' }}>
             Quick Start Workout
           </Typography>
           <Box
@@ -173,7 +173,7 @@ export default function DashboardPage() {
           >
             <AddIcon sx={{ fontSize: 48, color: '#FFF' }} />
           </Box>
-          <Typography variant="body2" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-secondary)', fontWeight: 500 }}>
             Create a new workout or choose from templates
           </Typography>
         </CardContent>
@@ -182,7 +182,7 @@ export default function DashboardPage() {
       {/* Today's Plan */}
       {todayWorkouts.length > 0 && (
         <Box sx={{ mb: 3 }}>
-          <Typography variant="h6" sx={{ mb: 2.5, fontWeight: 700, color: colors.neutral.charcoal }}>
+          <Typography variant="h6" sx={{ mb: 2.5, fontWeight: 700, color: 'var(--text)' }}>
             Today's Plan
           </Typography>
           {todayWorkouts.map(workout => (
@@ -240,7 +240,7 @@ export default function DashboardPage() {
       {/* Recent Workouts */}
       <Box>
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2.5 }}>
-          <Typography variant="h6" sx={{ fontWeight: 700, color: colors.neutral.charcoal }}>
+          <Typography variant="h6" sx={{ fontWeight: 700, color: 'var(--text)' }}>
             Recent Workouts
           </Typography>
           <Button
@@ -272,7 +272,16 @@ export default function DashboardPage() {
               </Typography>
               <Button
                 variant="contained"
-                sx={{ px: 4, py: 1.5 }}
+                sx={{
+                  px: 4,
+                  py: 1.5,
+                  minHeight: '48px',
+                  background: 'var(--btn-primary-bg)',
+                  color: 'var(--btn-primary-text)',
+                  '&:hover': {
+                    background: 'var(--btn-primary-hover)',
+                  },
+                }}
                 onClick={() => router.push('/builder')}
               >
                 Create Your First Workout

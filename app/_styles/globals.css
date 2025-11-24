@@ -13,12 +13,18 @@
   --surface: #FFFFFF;
   --text: #1A1A1A;
   --text-secondary: #666666;
+  --text-muted: #999999;
   --border: #E4E4E4;
   --card-bg: #FFFFFF;
+  --tile-bg: #FFFFFF;
+  --tile-border: #E4E4E4;
   --nav-bg: #FFFFFF;
   --nav-border: #DDDDDD;
+  --nav-icon: #666666;
+  --nav-icon-active: #FF8C42;
   --input-bg: #FFFFFF;
   --input-border: #E4E4E4;
+  --input-placeholder: #999999;
   --accent-orange: #FF8C42;
   --accent-orange-dark: #E67A35;
   --accent-gold-1: #C8A951;
@@ -29,6 +35,11 @@
   --shadow-lg: rgba(0, 0, 0, 0.16);
   --bottom-nav-height: 72px;
   --devtools-height: 56px;
+
+  /* WCAG-compliant button gradients */
+  --btn-primary-bg: linear-gradient(90deg, #D67525, #A85B1A);
+  --btn-primary-hover: linear-gradient(90deg, #BF651F, #8E4E17);
+  --btn-primary-text: #FFFFFF;
 }
 
 .theme-dark {
@@ -36,12 +47,18 @@
   --surface: #1A1A1A;
   --text: #FFFFFF;
   --text-secondary: #B0B0B0;
+  --text-muted: #BBBBBB;
   --border: #2A2A2A;
   --card-bg: #1A1A1A;
-  --nav-bg: #1A1A1A;
+  --tile-bg: #181818;
+  --tile-border: #333333;
+  --nav-bg: #111111;
   --nav-border: #333333;
+  --nav-icon: #CCCCCC;
+  --nav-icon-active: #F77C32;
   --input-bg: #1A1A1A;
   --input-border: #2A2A2A;
+  --input-placeholder: #666666;
   --accent-orange: #F77C32;
   --accent-orange-dark: #E06A25;
   --accent-gold-1: #A7924F;
@@ -52,6 +69,11 @@
   --shadow-lg: rgba(0, 0, 0, 0.4);
   --bottom-nav-height: 72px;
   --devtools-height: 56px;
+
+  /* WCAG-compliant button gradients for dark mode */
+  --btn-primary-bg: linear-gradient(90deg, #E67A35, #BF651F);
+  --btn-primary-hover: linear-gradient(90deg, #D67525, #A85B1A);
+  --btn-primary-text: #FFFFFF;
 }
 
 html,
@@ -73,7 +95,6 @@ body {
   box-shadow:
     0 0 0 8px #2A2A2A,
     0 20px 60px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
 }
 
 .device-frame::before {
@@ -86,14 +107,13 @@ body {
   height: 24px;
   background: #1A1A1A;
   border-radius: 0 0 16px 16px;
-  z-index: 10;
+  z-index: 100;
+  pointer-events: none;
 }
 
 .device-screen {
   position: relative;
   background: var(--surface);
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .device-screen::-webkit-scrollbar {
@@ -174,23 +194,29 @@ body {
   align-items: center;
   justify-content: center;
   padding: 10px 24px;
+  min-height: 48px;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
   border: none;
   cursor: pointer;
   transition: all 0.15s ease;
-  background: linear-gradient(90deg, #FF8C42 0%, #C89A2F 100%);
-  color: #1A1A1A;
+  background: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
 }
 
 .btn:hover {
-  background: linear-gradient(90deg, #E57A32 0%, #B78A27 100%);
+  background: var(--btn-primary-hover);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .btn:active {
   transform: scale(0.98);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--accent-orange);
+  outline-offset: 2px;
 }
 
 .btn-secondary {
