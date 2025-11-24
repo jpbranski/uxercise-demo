@@ -201,7 +201,7 @@ function BuilderContent() {
   };
 
   return (
-    <Box sx={{ minHeight: '100vh', bgcolor: 'var(--bg)', p: 3 }}>
+    <Box sx={{ bgcolor: 'var(--bg)' }}>
       {/* Header */}
       <Box sx={{ display: 'flex', gap: 2.5, mb: 3, alignItems: 'center' }}>
         <Button

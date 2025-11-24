@@ -30,13 +30,14 @@ export default function BottomNav({ deviceMode }: BottomNavProps) {
   return (
     <Paper
       sx={{
-        position: deviceMode === 'desktop' ? 'fixed' : 'absolute',
+        position: 'fixed',
         bottom: 0,
         left: deviceMode === 'desktop' ? '50%' : 0,
         right: deviceMode === 'desktop' ? 'auto' : 0,
         transform: deviceMode === 'desktop' ? 'translateX(-50%)' : 'none',
-        width: deviceMode === 'desktop' ? '720px' : 'auto',
+        width: deviceMode === 'desktop' ? '720px' : '100%',
         maxWidth: deviceMode === 'desktop' ? '100%' : 'auto',
+        height: 'var(--bottom-nav-height, 72px)',
         zIndex: 1000,
         bgcolor: 'var(--nav-bg)',
         borderTop: '1px solid var(--nav-border)',
