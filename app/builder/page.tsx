@@ -287,7 +287,7 @@ function BuilderContent() {
       </Box>
 
       {/* Workout Info */}
-      <Card sx={{ mb: 3, borderRadius: '14px' }}>
+      <Card sx={{ mb: 3, borderRadius: '14px', bgcolor: 'var(--card-bg)' }}>
         <CardContent>
           <TextField
             fullWidth
@@ -358,17 +358,17 @@ function BuilderContent() {
         </Box>
 
         {workout.exercises.map((exercise, idx) => (
-          <Card key={exercise.id} sx={{ mb: 2, borderRadius: '14px' }}>
+          <Card key={exercise.id} sx={{ mb: 2, borderRadius: '14px', bgcolor: 'var(--card-bg)' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                <DragIndicatorIcon sx={{ color: colors.neutral.darkGray, cursor: 'grab' }} />
+                <DragIndicatorIcon sx={{ color: 'var(--muted-text)', cursor: 'grab' }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, flex: 1 }}>
                   {idx + 1}. {exercise.name}
                 </Typography>
                 <IconButton
                   size="small"
                   onClick={() => handleDeleteExercise(exercise.id)}
-                  sx={{ color: '#F44336' }}
+                  sx={{ color: 'var(--error-red)' }}
                 >
                   <DeleteIcon />
                 </IconButton>
@@ -467,7 +467,7 @@ function BuilderContent() {
         ))}
 
         {workout.exercises.length === 0 && (
-          <Card sx={{ borderRadius: '14px' }}>
+          <Card sx={{ borderRadius: '14px', bgcolor: 'var(--card-bg)' }}>
             <CardContent sx={{ textAlign: 'center', py: 4 }}>
               <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                 No exercises added yet. Click "Add Exercise" to get started!

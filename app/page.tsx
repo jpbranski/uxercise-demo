@@ -191,6 +191,7 @@ export default function DashboardPage() {
               sx={{
                 mb: 2,
                 borderRadius: '16px',
+                bgcolor: 'var(--card-bg)',
                 boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
                 transition: 'all 0.2s ease',
                 '&:hover': {
@@ -201,7 +202,7 @@ export default function DashboardPage() {
               <CardContent sx={{ p: 2.5 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                   <Box sx={{ flex: 1 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5, color: colors.neutral.charcoal }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5, color: 'var(--text)' }}>
                       {workout.name}
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 1 }}>
@@ -209,7 +210,7 @@ export default function DashboardPage() {
                         <Chip key={tag} label={tag} size="small" />
                       ))}
                     </Box>
-                    <Typography variant="caption" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
+                    <Typography variant="caption" sx={{ color: 'var(--text-secondary)', fontWeight: 500 }}>
                       {workout.estimatedDuration} min · {workout.exercises.length} exercises
                     </Typography>
                   </Box>
@@ -262,12 +263,13 @@ export default function DashboardPage() {
           <Card
             sx={{
               borderRadius: '16px',
+              bgcolor: 'var(--card-bg)',
               boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
             }}
           >
             <CardContent sx={{ textAlign: 'center', py: 5 }}>
-              <FitnessCenterIcon sx={{ fontSize: 64, color: colors.neutral.lightGray, mb: 2 }} />
-              <Typography variant="body1" sx={{ color: colors.neutral.darkGray, mb: 3, fontWeight: 500 }}>
+              <FitnessCenterIcon sx={{ fontSize: 64, color: 'var(--muted-text)', mb: 2 }} />
+              <Typography variant="body1" sx={{ color: 'var(--muted-text)', mb: 3, fontWeight: 500 }}>
                 No workouts logged yet
               </Typography>
               <Button
@@ -295,6 +297,7 @@ export default function DashboardPage() {
               sx={{
                 mb: 2,
                 borderRadius: '16px',
+                bgcolor: 'var(--card-bg)',
                 boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
                 transition: 'all 0.2s ease',
                 '&:hover': {
@@ -304,10 +307,10 @@ export default function DashboardPage() {
               }}
             >
               <CardContent sx={{ p: 2.5 }}>
-                <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5, color: colors.neutral.charcoal }}>
+                <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5, color: 'var(--text)' }}>
                   {log.workoutName}
                 </Typography>
-                <Typography variant="caption" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
+                <Typography variant="caption" sx={{ color: 'var(--text-secondary)', fontWeight: 500 }}>
                   {new Date(log.completedAt).toLocaleDateString()} · {log.duration} min
                 </Typography>
                 <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mt: 1.5 }}>

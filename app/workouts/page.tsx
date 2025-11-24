@@ -118,7 +118,7 @@ export default function WorkoutsPage() {
         />
         <IconButton
           onClick={(e) => setAnchorEl(e.currentTarget)}
-          sx={{ border: '1px solid #E4E4E4' }}
+          sx={{ border: '1px solid var(--border)' }}
         >
           <SortIcon />
         </IconButton>
@@ -207,7 +207,7 @@ export default function WorkoutsPage() {
                     <IconButton
                       size="small"
                       onClick={() => handleDelete(workout.id)}
-                      sx={{ color: '#F44336' }}
+                      sx={{ color: 'var(--error-red)' }}
                     >
                       <DeleteIcon />
                     </IconButton>
@@ -232,11 +232,11 @@ export default function WorkoutsPage() {
                           size="small"
                           onClick={() => handleToggleSchedule(workout, day)}
                           sx={{
-                            bgcolor: isScheduled ? colors.primary.main : '#E4E4E4',
-                            color: isScheduled ? '#FFF' : colors.neutral.darkGray,
+                            bgcolor: isScheduled ? colors.primary.main : 'var(--surface)',
+                            color: isScheduled ? '#FFF' : 'var(--text)',
                             cursor: 'pointer',
                             '&:hover': {
-                              bgcolor: isScheduled ? colors.primary.dark : '#D0D0D0',
+                              bgcolor: isScheduled ? colors.primary.dark : 'var(--tile-bg)',
                             },
                           }}
                         />
