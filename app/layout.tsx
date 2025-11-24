@@ -4,6 +4,7 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import { useState, useEffect, ReactNode } from 'react';
 import theme from './_theme/theme';
 import './_styles/globals.css';
+import '../styles/theme.css';
 import BottomNav from './_components/BottomNav';
 import DevToolsPanel, { DEVICE_PRESETS, DeviceMode, DevicePreset } from './_components/DevTools/DevToolsPanel';
 import { isTauriApp } from './_lib/tauri';
@@ -19,25 +20,34 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   useEffect(() => {
     const savedTheme = loadTheme();
     setAppTheme(savedTheme);
-    document.body.className = `theme-${savedTheme}`;
+    if (savedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   }, []);
 
   // Update theme class when theme changes
   useEffect(() => {
-    document.body.className = `theme-${appTheme}`;
+    if (appTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
     saveTheme(appTheme);
   }, [appTheme]);
 
   return (
     <html lang="en">
       <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <title>Uxercise - Fitness Tracking & Workout Builder</title>
       </head>
-      <body>
+      <body className={`${appTheme} bg-[var(--bg)] text-[var(--text)]`}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
 

@@ -43,7 +43,7 @@ export default function DashboardPage() {
   );
 
   return (
-    <Box sx={{ bgcolor: 'var(--bg)' }}>
+    <Box className="main-content" sx={{ bgcolor: 'var(--bg)' }}>
       {/* Header */}
       <Box sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 2 }}>
         <Box

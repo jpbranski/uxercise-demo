@@ -9,33 +9,28 @@
 /* Theme Variables */
 :root,
 .theme-light {
-  --bg: #F6F6F6;
-  --surface: #FFFFFF;
-  --text: #1A1A1A;
-  --text-secondary: #666666;
-  --text-muted: #999999;
+  /* Derived from theme.css base tokens */
+  --surface: var(--card);
+  --text-secondary: var(--text-muted);
   --text-disabled: #CCCCCC;
-  --border: #E4E4E4;
-  --card-bg: #FFFFFF;
-  --tile-bg: #FFFFFF;
-  --tile-border: #E4E4E4;
-  --nav-bg: #FFFFFF;
-  --nav-border: #DDDDDD;
-  --nav-icon: #666666;
-  --nav-icon-active: #FF8C42;
-  --input-bg: #FFFFFF;
-  --input-border: #E4E4E4;
-  --input-border-hover: #b5b5b5;
-  --input-border-disabled: #E4E4E4;
-  --input-placeholder: #999999;
-  --accent: #FF8C42;
-  --accent-orange: #FF8C42;
-  --accent-orange-dark: #E67A35;
-  --accent-orange-shadow: rgba(255, 140, 66, 0.3);
-  --accent-orange-bg-light: rgba(255, 140, 66, 0.05);
-  --accent-gold-1: #C8A951;
-  --accent-gold-2: #D4B969;
-  --accent-gold-3: #E7CF8B;
+  --border: var(--input-border);
+  --card-bg: var(--card);
+  --tile-bg: var(--card);
+  --tile-border: var(--input-border);
+  --nav-bg: var(--card);
+  --nav-border: var(--input-border);
+  --nav-icon: var(--text-muted);
+  --nav-icon-active: var(--accent);
+  --input-border-hover: #999;
+  --input-border-disabled: var(--input-border);
+  --input-placeholder: var(--text-muted);
+  --accent-orange: var(--accent);
+  --accent-orange-dark: #d67021;
+  --accent-orange-shadow: rgba(234, 122, 36, 0.3);
+  --accent-orange-bg-light: rgba(234, 122, 36, 0.05);
+  --accent-gold-1: #d7a945;
+  --accent-gold-2: #e0b75c;
+  --accent-gold-3: #e9c673;
   --shadow-sm: rgba(0, 0, 0, 0.08);
   --shadow-md: rgba(0, 0, 0, 0.12);
   --shadow-lg: rgba(0, 0, 0, 0.16);
@@ -83,33 +78,29 @@
 }
 
 .theme-dark {
-  --bg: #111111;
-  --surface: #1A1A1A;
-  --text: #FFFFFF;
-  --text-secondary: #B0B0B0;
-  --text-muted: #BBBBBB;
+  /* Dark theme already handled by html.dark in theme.css */
+  /* Derived variables for compatibility */
+  --surface: var(--card);
+  --text-secondary: var(--text-muted);
   --text-disabled: #666666;
-  --border: #2A2A2A;
-  --card-bg: #1A1A1A;
-  --tile-bg: #181818;
-  --tile-border: #333333;
-  --nav-bg: #111111;
-  --nav-border: #333333;
-  --nav-icon: #CCCCCC;
-  --nav-icon-active: #F77C32;
-  --input-bg: #1A1A1A;
-  --input-border: #2A2A2A;
+  --border: var(--input-border);
+  --card-bg: var(--card);
+  --tile-bg: var(--card);
+  --tile-border: var(--input-border);
+  --nav-bg: var(--card);
+  --nav-border: var(--input-border);
+  --nav-icon: var(--text-muted);
+  --nav-icon-active: var(--accent);
   --input-border-hover: #666;
-  --input-border-disabled: #2A2A2A;
-  --input-placeholder: #666666;
-  --accent: #F77C32;
-  --accent-orange: #F77C32;
-  --accent-orange-dark: #E06A25;
-  --accent-orange-shadow: rgba(247, 124, 50, 0.3);
-  --accent-orange-bg-light: rgba(247, 124, 50, 0.05);
-  --accent-gold-1: #A7924F;
-  --accent-gold-2: #B8A463;
-  --accent-gold-3: #C9B97C;
+  --input-border-disabled: var(--input-border);
+  --input-placeholder: var(--text-muted);
+  --accent-orange: var(--accent);
+  --accent-orange-dark: #d67021;
+  --accent-orange-shadow: rgba(234, 122, 36, 0.3);
+  --accent-orange-bg-light: rgba(234, 122, 36, 0.05);
+  --accent-gold-1: #d7a945;
+  --accent-gold-2: #e0b75c;
+  --accent-gold-3: #e9c673;
   --shadow-sm: rgba(0, 0, 0, 0.2);
   --shadow-md: rgba(0, 0, 0, 0.3);
   --shadow-lg: rgba(0, 0, 0, 0.4);
@@ -164,17 +155,36 @@ body {
   background: var(--bg);
   color: var(--text);
   transition: background-color 0.2s ease, color 0.2s ease;
+  overflow-x: hidden;
+}
+
+.main-content {
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .main-content {
+    padding-bottom: 0;
+  }
 }
 
 /* Device Frame Styles */
 .device-frame {
   position: relative;
+  max-width: 420px;
   margin: 0 auto;
   background: #1A1A1A;
   border-radius: 32px;
   box-shadow:
     0 0 0 8px #2A2A2A,
     0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 900px) {
+  .device-frame {
+    transform: scale(1.15);
+    transform-origin: top center;
+  }
 }
 
 .device-frame::before {
@@ -222,11 +232,15 @@ body {
 
 /* Gradient backgrounds */
 .gradient-orange-gold {
-  background: linear-gradient(90deg, #FF8C42 0%, #C89A2F 100%);
+  background: linear-gradient(90deg, #ea7a24 0%, #d7a945 100%);
+  color: #000;
+  font-weight: 600;
 }
 
 .gradient-gold-amber {
-  background: linear-gradient(135deg, #C8A951 0%, #D4B969 50%, #E7CF8B 100%);
+  background: linear-gradient(90deg, #ea7a24 0%, #d7a945 100%);
+  color: #000;
+  font-weight: 600;
 }
 
 .gradient-dark-overlay {
@@ -240,9 +254,9 @@ body {
   padding: 4px 12px;
   border-radius: 8px;
   font-size: 0.75rem;
-  font-weight: 500;
-  background: linear-gradient(135deg, #C8A951 0%, #D4B969 50%, #E7CF8B 100%);
-  color: #1A1A1A;
+  font-weight: 600;
+  background: linear-gradient(90deg, #ea7a24 0%, #d7a945 100%);
+  color: #000;
   white-space: nowrap;
 }
 
@@ -264,8 +278,9 @@ body {
 }
 
 .card-gradient {
-  background: linear-gradient(90deg, #FF8C42 0%, #C89A2F 100%);
-  color: #1A1A1A;
+  background: linear-gradient(90deg, #ea7a24 0%, #d7a945 100%);
+  color: #000;
+  font-weight: 600;
 }
 
 /* Button styles */
@@ -281,12 +296,12 @@ body {
   border: none;
   cursor: pointer;
   transition: all 0.15s ease;
-  background: var(--btn-primary-bg);
-  color: var(--btn-primary-text);
+  background: var(--accent);
+  color: var(--accent-contrast);
 }
 
 .btn:hover {
-  background: var(--btn-primary-hover);
+  opacity: 0.9;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -295,31 +310,32 @@ body {
 }
 
 .btn:focus-visible {
-  outline: 3px solid var(--accent-orange);
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
 
 .btn-secondary {
-  background: linear-gradient(135deg, #C8A951 0%, #D4B969 50%, #E7CF8B 100%);
-  color: #1A1A1A;
+  background: linear-gradient(90deg, #ea7a24 0%, #d7a945 100%);
+  color: #000;
+  font-weight: 600;
 }
 
 .btn-outline {
   background: transparent;
-  border: 2px solid #FF8C42;
-  color: #FF8C42;
+  border: 2px solid var(--accent);
+  color: var(--accent);
 }
 
 .btn-outline:hover {
-  background: #FF8C42;
-  color: #FFFFFF;
+  background: var(--accent);
+  color: var(--accent-contrast);
 }
 
 /* Input styles */
 .input {
   width: 100%;
   padding: 12px 16px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   border: 1px solid var(--input-border);
   background: var(--input-bg);
   color: var(--text);
@@ -327,10 +343,14 @@ body {
   transition: all 0.15s ease;
 }
 
+.input::placeholder {
+  color: var(--text-muted);
+}
+
 .input:focus {
   outline: none;
-  border-color: var(--accent-orange);
-  box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.1);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(234, 122, 36, 0.1);
 }
 
 /* Custom number input (hide default steppers) */
@@ -377,7 +397,7 @@ input[type='number'] {
 
 /* Utility classes */
 .text-gradient {
-  background: linear-gradient(90deg, #FF8C42 0%, #C89A2F 100%);
+  background: linear-gradient(90deg, #ea7a24 0%, #d7a945 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

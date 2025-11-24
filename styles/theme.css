@@ -1,0 +1,25 @@
+:root {
+--bg: #f7f7f7;
+--card: #ffffff;
+--text: #1a1a1a;
+--text-muted: #555;
+--input-bg: #ffffff;
+--input-border: #ccc;
+--border-radius: 12px;
+
+--brand-orange: #ea7a24;
+--brand-gold: #d7a945;
+
+--accent: var(--brand-orange);
+--accent-contrast: #ffffff;
+}
+
+html.dark {
+--bg: #111;
+--card: #1a1a1a;
+--text: #f1f1f1;
+--text-muted: #bdbdbd;
+--input-bg: #191919;
+--input-border: #2b2b2b;
+--accent-contrast: #0a0a0a;
+}

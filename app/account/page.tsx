@@ -36,7 +36,11 @@ export default function AccountPage() {
   const handleThemeChange = (newTheme: Theme) => {
     setTheme(newTheme);
     saveTheme(newTheme);
-    document.body.className = `theme-${newTheme}`;
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   const handleSave = () => {
@@ -103,7 +107,7 @@ export default function AccountPage() {
   const bmi = calculateBMI();
 
   return (
-    <Box sx={{ bgcolor: 'var(--bg)' }}>
+    <Box className="main-content" sx={{ bgcolor: 'var(--bg)' }}>
       {/* Header */}
       <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: 'var(--text)' }}>
         My Profile

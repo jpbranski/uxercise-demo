@@ -1,7 +1,6 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
-import { Box, BottomNavigation, BottomNavigationAction, Paper } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import ListAltIcon from '@mui/icons-material/ListAlt';
@@ -25,51 +24,29 @@ export default function BottomNav({ deviceMode }: BottomNavProps) {
     { label: 'Account', value: '/account', icon: <PersonIcon /> },
   ];
 
-  const currentValue = navItems.find(item => pathname === item.value)?.value || '/';
-
   return (
-    <Paper
-      sx={{
-        position: 'fixed',
-        bottom: 0,
+    <div
+      className="fixed bottom-0 left-0 right-0 bg-[var(--card)] border-t border-[var(--input-border)] h-16 flex items-center justify-around text-[var(--text)]"
+      style={{
+        zIndex: 1000,
         left: deviceMode === 'desktop' ? '50%' : 0,
         right: deviceMode === 'desktop' ? 'auto' : 0,
         transform: deviceMode === 'desktop' ? 'translateX(-50%)' : 'none',
         width: deviceMode === 'desktop' ? '720px' : '100%',
-        maxWidth: deviceMode === 'desktop' ? '100%' : 'auto',
-        height: 'var(--bottom-nav-height, 72px)',
-        zIndex: 1000,
-        bgcolor: 'var(--nav-bg)',
-        borderTop: '1px solid var(--nav-border)',
       }}
-      elevation={3}
     >
-      <BottomNavigation
-        value={currentValue}
-        onChange={(event, newValue) => {
-          router.push(newValue);
-        }}
-        showLabels
-        sx={{
-          bgcolor: 'var(--nav-bg)',
-          '& .MuiBottomNavigationAction-root': {
-            minWidth: 'auto',
-            color: 'var(--text-secondary)',
-            '&.Mui-selected': {
-              color: 'var(--accent-orange)',
-            },
-          },
-        }}
-      >
-        {navItems.map((item) => (
-          <BottomNavigationAction
-            key={item.value}
-            label={item.label}
-            value={item.value}
-            icon={item.icon}
-          />
-        ))}
-      </BottomNavigation>
-    </Paper>
+      {navItems.map((item) => (
+        <button
+          key={item.value}
+          onClick={() => router.push(item.value)}
+          className={`flex flex-col items-center justify-center gap-1 px-2 py-2 flex-1 ${
+            pathname === item.value ? 'text-[var(--accent)]' : 'text-[var(--text-muted)]'
+          }`}
+        >
+          {item.icon}
+          <span className="text-xs">{item.label}</span>
+        </button>
+      ))}
+    </div>
   );
 }

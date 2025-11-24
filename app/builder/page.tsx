@@ -201,7 +201,7 @@ function BuilderContent() {
   };
 
   return (
-    <Box sx={{ bgcolor: 'var(--bg)' }}>
+    <Box className="main-content" sx={{ bgcolor: 'var(--bg)' }}>
       {/* Header */}
       <Box sx={{ display: 'flex', gap: 2.5, mb: 3, alignItems: 'center' }}>
         <Button
