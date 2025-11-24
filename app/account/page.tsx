@@ -173,7 +173,26 @@ export default function AccountPage() {
             label="Name"
             value={profile.name}
             onChange={(e) => handleChange('name', e.target.value)}
-            sx={{ mb: 2.5 }}
+            sx={{
+              mb: 2.5,
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'var(--input-border)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'var(--input-border-hover)',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'var(--accent-orange)',
+                },
+              },
+              input: {
+                color: 'var(--text)',
+              },
+              '& .MuiInputLabel-root': {
+                color: 'var(--text-secondary)',
+              },
+            }}
           />
           <TextField
             fullWidth
@@ -182,6 +201,25 @@ export default function AccountPage() {
             value={profile.age || ''}
             onChange={(e) => handleChange('age', parseInt(e.target.value) || undefined)}
             placeholder="Enter your age"
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'var(--input-border)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'var(--input-border-hover)',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'var(--accent-orange)',
+                },
+              },
+              input: {
+                color: 'var(--text)',
+              },
+              '& .MuiInputLabel-root': {
+                color: 'var(--text-secondary)',
+              },
+            }}
           />
         </CardContent>
       </Card>
@@ -229,6 +267,22 @@ export default function AccountPage() {
               onChange={(e) => handleChange('height', parseFloat(e.target.value) || undefined)}
               placeholder={profile.heightUnit === 'cm' ? '170' : '5.7'}
               inputProps={{ step: '0.1' }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'var(--input-border)',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: 'var(--input-border-hover)',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'var(--accent-orange)',
+                  },
+                },
+                input: {
+                  color: 'var(--text)',
+                },
+              }}
             />
           </Box>
 
@@ -268,6 +322,22 @@ export default function AccountPage() {
               onChange={(e) => handleChange('weight', parseFloat(e.target.value) || undefined)}
               placeholder={profile.weightUnit === 'kg' ? '70' : '154'}
               inputProps={{ step: '0.1' }}
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'var(--input-border)',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: 'var(--input-border-hover)',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'var(--accent-orange)',
+                  },
+                },
+                input: {
+                  color: 'var(--text)',
+                },
+              }}
             />
           </Box>
 

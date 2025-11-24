@@ -333,7 +333,11 @@ function PlayerContent() {
               color: '#FFF',
               '& fieldset': { borderColor: 'rgba(255, 255, 255, 0.3)' },
               '&:hover fieldset': { borderColor: 'rgba(255, 255, 255, 0.5)' },
-              '&.Mui-focused fieldset': { borderColor: colors.primary.main },
+              '&.Mui-focused fieldset': { borderColor: 'var(--accent-orange)' },
+            },
+            '& .MuiInputBase-input::placeholder': {
+              color: 'rgba(255, 255, 255, 0.6)',
+              opacity: 1,
             },
           }}
         />
