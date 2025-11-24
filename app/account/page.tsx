@@ -17,7 +17,6 @@ import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import { loadProfile, saveProfile, Profile, loadTheme, saveTheme, Theme } from '../_lib/storage';
-import { colors } from '../_theme/theme';
 
 export default function AccountPage() {
   const [profile, setProfile] = useState<Profile>({
@@ -120,10 +119,10 @@ export default function AccountPage() {
                 width: 140,
                 height: 140,
                 margin: '0 auto',
-                background: colors.gradients.orangeToGold,
+                background: 'var(--btn-primary-bg)',
                 fontSize: '3.5rem',
                 border: '4px solid var(--card-bg)',
-                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                boxShadow: '0 4px 16px var(--shadow-md)',
               }}
             >
               {!profile.avatar && <PersonIcon sx={{ fontSize: '4rem' }} />}
@@ -133,13 +132,13 @@ export default function AccountPage() {
                 position: 'absolute',
                 bottom: 4,
                 right: 4,
-                bgcolor: colors.primary.main,
+                bgcolor: 'var(--accent-orange)',
                 color: 'var(--btn-primary-text)',
                 width: 44,
                 height: 44,
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
+                boxShadow: '0 2px 8px var(--shadow-sm)',
                 '&:hover': {
-                  bgcolor: colors.primary.dark,
+                  bgcolor: 'var(--accent-orange-dark)',
                   transform: 'scale(1.05)',
                 },
                 transition: 'all 0.2s ease',
@@ -247,10 +246,10 @@ export default function AccountPage() {
                     fontWeight: 600,
                     fontSize: '0.75rem',
                     '&.Mui-selected': {
-                      bgcolor: colors.primary.main,
-                      color: '#FFF',
+                      bgcolor: 'var(--accent-orange)',
+                      color: 'var(--btn-primary-text)',
                       '&:hover': {
-                        bgcolor: colors.primary.dark,
+                        bgcolor: 'var(--accent-orange-dark)',
                       },
                     },
                   },
@@ -302,10 +301,10 @@ export default function AccountPage() {
                     fontWeight: 600,
                     fontSize: '0.75rem',
                     '&.Mui-selected': {
-                      bgcolor: colors.primary.main,
-                      color: '#FFF',
+                      bgcolor: 'var(--accent-orange)',
+                      color: 'var(--btn-primary-text)',
                       '&:hover': {
-                        bgcolor: colors.primary.dark,
+                        bgcolor: 'var(--accent-orange-dark)',
                       },
                     },
                   },
@@ -347,7 +346,7 @@ export default function AccountPage() {
                 mt: 3,
                 p: 3,
                 borderRadius: '14px',
-                background: colors.gradients.goldToAmber,
+                background: 'linear-gradient(135deg, var(--accent-gold-1) 0%, var(--accent-gold-2) 50%, var(--accent-gold-3) 100%)',
                 textAlign: 'center',
                 boxShadow: '0 2px 8px var(--shadow-md)',
               }}
@@ -391,10 +390,10 @@ export default function AccountPage() {
                   alignItems: 'center',
                   gap: 1,
                   '&.Mui-selected': {
-                    bgcolor: colors.primary.main,
-                    color: '#FFF',
+                    bgcolor: 'var(--accent-orange)',
+                    color: 'var(--btn-primary-text)',
                     '&:hover': {
-                      bgcolor: colors.primary.dark,
+                      bgcolor: 'var(--accent-orange-dark)',
                     },
                   },
                 },
@@ -427,7 +426,7 @@ export default function AccountPage() {
             fontWeight: 600,
             background: 'var(--btn-primary-bg)',
             color: 'var(--btn-primary-text)',
-            boxShadow: hasChanges ? '0 4px 12px rgba(255, 140, 66, 0.3)' : 'none',
+            boxShadow: hasChanges ? '0 4px 12px var(--accent-orange-shadow)' : 'none',
             '&:hover': {
               background: 'var(--btn-primary-hover)',
             },
@@ -458,7 +457,7 @@ export default function AccountPage() {
             borderWidth: '2px',
             '&:hover': {
               borderColor: 'var(--accent-orange-dark)',
-              bgcolor: 'rgba(255, 140, 66, 0.05)',
+              bgcolor: 'var(--accent-orange-bg-light)',
               borderWidth: '2px',
             },
             '&:focus-visible': {

@@ -16,7 +16,6 @@ import AddIcon from '@mui/icons-material/Add';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import { loadWorkouts, loadLogs, loadProfile, Workout, WorkoutLog } from './_lib/storage';
-import { colors } from './_theme/theme';
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -52,14 +51,14 @@ export default function DashboardPage() {
             width: 52,
             height: 52,
             borderRadius: '14px',
-            background: colors.gradients.orangeToGold,
+            background: 'var(--btn-primary-bg)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 4px 12px rgba(255, 140, 66, 0.25)',
+            boxShadow: '0 4px 12px var(--shadow-md)',
           }}
         >
-          <FitnessCenterIcon sx={{ color: '#FFF', fontSize: 28 }} />
+          <FitnessCenterIcon sx={{ color: 'var(--btn-primary-text)', fontSize: 28 }} />
         </Box>
         <Box>
           <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text)' }}>
@@ -76,14 +75,14 @@ export default function DashboardPage() {
         <Grid item xs={6}>
           <Card
             sx={{
-              background: colors.gradients.orangeToGold,
-              color: '#FFF',
+              background: 'var(--btn-primary-bg)',
+              color: 'var(--btn-primary-text)',
               borderRadius: '16px',
-              boxShadow: '0 4px 16px rgba(255, 140, 66, 0.25)',
+              boxShadow: '0 4px 16px var(--shadow-md)',
               transition: 'transform 0.2s ease, box-shadow 0.2s ease',
               '&:hover': {
                 transform: 'translateY(-2px)',
-                boxShadow: '0 6px 20px rgba(255, 140, 66, 0.3)',
+                boxShadow: '0 6px 20px var(--shadow-lg)',
               },
             }}
           >
@@ -103,14 +102,14 @@ export default function DashboardPage() {
         <Grid item xs={6}>
           <Card
             sx={{
-              background: colors.gradients.goldToAmber,
-              color: colors.neutral.charcoal,
+              background: 'linear-gradient(135deg, var(--accent-gold-1) 0%, var(--accent-gold-2) 50%, var(--accent-gold-3) 100%)',
+              color: 'var(--text-on-gradient)',
               borderRadius: '16px',
-              boxShadow: '0 4px 16px rgba(200, 169, 81, 0.25)',
+              boxShadow: '0 4px 16px var(--shadow-md)',
               transition: 'transform 0.2s ease, box-shadow 0.2s ease',
               '&:hover': {
                 transform: 'translateY(-2px)',
-                boxShadow: '0 6px 20px rgba(200, 169, 81, 0.3)',
+                boxShadow: '0 6px 20px var(--shadow-lg)',
               },
             }}
           >
@@ -153,17 +152,17 @@ export default function DashboardPage() {
               width: 100,
               height: 100,
               borderRadius: '50%',
-              background: colors.gradients.orangeToGold,
+              background: 'var(--btn-primary-bg)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               margin: '0 auto 20px',
               cursor: 'pointer',
               transition: 'all 0.2s ease',
-              boxShadow: '0 4px 16px rgba(255, 140, 66, 0.3)',
+              boxShadow: '0 4px 16px var(--shadow-md)',
               '&:hover': {
                 transform: 'scale(1.08)',
-                boxShadow: '0 6px 24px rgba(255, 140, 66, 0.4)',
+                boxShadow: '0 6px 24px var(--shadow-lg)',
               },
               '&:active': {
                 transform: 'scale(1.02)',
@@ -171,7 +170,7 @@ export default function DashboardPage() {
             }}
             onClick={() => router.push('/builder')}
           >
-            <AddIcon sx={{ fontSize: 48, color: '#FFF' }} />
+            <AddIcon sx={{ fontSize: 48, color: 'var(--btn-primary-text)' }} />
           </Box>
           <Typography variant="body2" sx={{ color: 'var(--text-secondary)', fontWeight: 500 }}>
             Create a new workout or choose from templates
@@ -192,10 +191,10 @@ export default function DashboardPage() {
                 mb: 2,
                 borderRadius: '16px',
                 bgcolor: 'var(--card-bg)',
-                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
+                boxShadow: '0 2px 12px var(--shadow-sm)',
                 transition: 'all 0.2s ease',
                 '&:hover': {
-                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                  boxShadow: '0 4px 16px var(--shadow-md)',
                 },
               }}
             >
@@ -216,15 +215,15 @@ export default function DashboardPage() {
                   </Box>
                   <IconButton
                     sx={{
-                      background: colors.gradients.orangeToGold,
-                      color: '#FFF',
+                      background: 'var(--btn-primary-bg)',
+                      color: 'var(--btn-primary-text)',
                       width: 48,
                       height: 48,
-                      boxShadow: '0 2px 8px rgba(255, 140, 66, 0.3)',
+                      boxShadow: '0 2px 8px var(--shadow-sm)',
                       '&:hover': {
-                        background: colors.gradients.orangeToGold,
+                        background: 'var(--btn-primary-hover)',
                         transform: 'scale(1.05)',
-                        boxShadow: '0 4px 12px rgba(255, 140, 66, 0.4)',
+                        boxShadow: '0 4px 12px var(--shadow-md)',
                       },
                     }}
                     onClick={() => router.push(`/builder?id=${workout.id}&play=true`)}
@@ -248,10 +247,10 @@ export default function DashboardPage() {
             size="small"
             onClick={() => router.push('/workouts')}
             sx={{
-              color: colors.primary.main,
+              color: 'var(--accent-orange)',
               fontWeight: 600,
               '&:hover': {
-                bgcolor: 'rgba(255, 140, 66, 0.08)',
+                bgcolor: 'var(--surface)',
               },
             }}
           >
@@ -264,7 +263,7 @@ export default function DashboardPage() {
             sx={{
               borderRadius: '16px',
               bgcolor: 'var(--card-bg)',
-              boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
+              boxShadow: '0 2px 12px var(--shadow-sm)',
             }}
           >
             <CardContent sx={{ textAlign: 'center', py: 5 }}>
@@ -298,10 +297,10 @@ export default function DashboardPage() {
                 mb: 2,
                 borderRadius: '16px',
                 bgcolor: 'var(--card-bg)',
-                boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
+                boxShadow: '0 2px 12px var(--shadow-sm)',
                 transition: 'all 0.2s ease',
                 '&:hover': {
-                  boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
+                  boxShadow: '0 4px 16px var(--shadow-md)',
                   transform: 'translateY(-1px)',
                 },
               }}

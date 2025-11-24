@@ -23,7 +23,6 @@ import AddIcon from '@mui/icons-material/Add';
 import SortIcon from '@mui/icons-material/Sort';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { loadWorkouts, saveWorkouts, Workout } from '../_lib/storage';
-import { colors } from '../_theme/theme';
 
 export default function WorkoutsPage() {
   const router = useRouter();
@@ -69,9 +68,9 @@ export default function WorkoutsPage() {
     });
 
   const difficultyColors: Record<string, string> = {
-    Beginner: '#4CAF50',
-    Intermediate: '#FF9800',
-    Advanced: '#F44336',
+    Beginner: 'var(--success-green)',
+    Intermediate: 'var(--warning-orange)',
+    Advanced: 'var(--error-red)',
   };
 
   const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -190,7 +189,7 @@ export default function WorkoutsPage() {
                         size="small"
                         sx={{
                           bgcolor: difficultyColors[workout.difficulty],
-                          color: '#FFF',
+                          color: 'var(--btn-primary-text)',
                           fontWeight: 600,
                         }}
                       />
@@ -207,9 +206,9 @@ export default function WorkoutsPage() {
                       size="small"
                       onClick={() => router.push(`/builder?id=${workout.id}&play=true`)}
                       sx={{
-                        background: colors.gradients.orangeToGold,
-                        color: '#FFF',
-                        '&:hover': { background: colors.gradients.orangeToGold, opacity: 0.9 },
+                        background: 'var(--btn-primary-bg)',
+                        color: 'var(--btn-primary-text)',
+                        '&:hover': { background: 'var(--btn-primary-hover)' },
                       }}
                     >
                       <PlayArrowIcon />
@@ -248,11 +247,11 @@ export default function WorkoutsPage() {
                           size="small"
                           onClick={() => handleToggleSchedule(workout, day)}
                           sx={{
-                            bgcolor: isScheduled ? colors.primary.main : 'var(--surface)',
-                            color: isScheduled ? '#FFF' : 'var(--text)',
+                            bgcolor: isScheduled ? 'var(--accent-orange)' : 'var(--surface)',
+                            color: isScheduled ? 'var(--btn-primary-text)' : 'var(--text)',
                             cursor: 'pointer',
                             '&:hover': {
-                              bgcolor: isScheduled ? colors.primary.dark : 'var(--tile-bg)',
+                              bgcolor: isScheduled ? 'var(--accent-orange-dark)' : 'var(--tile-bg)',
                             },
                           }}
                         />

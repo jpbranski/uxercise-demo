@@ -19,7 +19,6 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import DownloadIcon from '@mui/icons-material/Download';
 import { loadLogs, WorkoutLog } from '../_lib/storage';
 import { saveFile } from '../_lib/tauri';
-import { colors } from '../_theme/theme';
 
 export default function LogPage() {
   const [logs, setLogs] = useState<WorkoutLog[]>([]);
@@ -165,11 +164,11 @@ export default function LogPage() {
               label={range === 'all' ? 'All Time' : range === 'week' ? 'This Week' : 'This Month'}
               onClick={() => setDateRange(range)}
               sx={{
-                bgcolor: dateRange === range ? colors.primary.main : 'var(--surface)',
-                color: dateRange === range ? '#FFF' : 'var(--text)',
+                bgcolor: dateRange === range ? 'var(--accent-orange)' : 'var(--surface)',
+                color: dateRange === range ? 'var(--btn-primary-text)' : 'var(--text)',
                 cursor: 'pointer',
                 '&:hover': {
-                  bgcolor: dateRange === range ? colors.primary.dark : 'var(--tile-bg)',
+                  bgcolor: dateRange === range ? 'var(--accent-orange-dark)' : 'var(--tile-bg)',
                 },
               }}
             />

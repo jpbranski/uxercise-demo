@@ -17,7 +17,6 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Set } from '../_lib/storage';
-import { colors } from '../_theme/theme';
 
 interface EditSetModalProps {
   open: boolean;
@@ -231,7 +230,7 @@ export default function EditSetModal({
             color: 'var(--error-red)',
             fontWeight: 600,
             '&:hover': {
-              bgcolor: 'rgba(244, 67, 54, 0.1)',
+              bgcolor: 'var(--error-red-hover-bg)',
             },
           }}
         >
