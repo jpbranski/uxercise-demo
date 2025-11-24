@@ -95,13 +95,22 @@ export default function LogPage() {
     <Box sx={{ minHeight: '100vh', bgcolor: 'var(--bg)', p: 3 }}>
       {/* Header */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-        <Typography variant="h5" sx={{ fontWeight: 700 }}>
+        <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text)' }}>
           Workout Log
         </Typography>
         <Button
           variant="contained"
           startIcon={<DownloadIcon />}
           onClick={(e) => setAnchorEl(e.currentTarget)}
+          sx={{
+            minHeight: '48px',
+            px: 2,
+            background: 'var(--btn-primary-bg)',
+            color: 'var(--btn-primary-text)',
+            '&:hover': {
+              background: 'var(--btn-primary-hover)',
+            },
+          }}
         >
           Export
         </Button>
@@ -154,26 +163,26 @@ export default function LogPage() {
 
       {/* Logs List */}
       {filteredLogs.length === 0 ? (
-        <Card sx={{ borderRadius: '14px' }}>
+        <Card sx={{ borderRadius: '14px', bgcolor: 'var(--card-bg)' }}>
           <CardContent sx={{ textAlign: 'center', py: 4 }}>
-            <Typography variant="body1" sx={{ color: colors.neutral.darkGray }}>
+            <Typography variant="body1" sx={{ color: 'var(--text-secondary)' }}>
               {searchTerm ? 'No logs found' : 'No workouts logged yet'}
             </Typography>
           </CardContent>
         </Card>
       ) : (
         filteredLogs.map(log => (
-          <Card key={log.id} sx={{ mb: 2, borderRadius: '14px' }}>
+          <Card key={log.id} sx={{ mb: 2, borderRadius: '14px', bgcolor: 'var(--card-bg)', boxShadow: '0 2px 12px var(--shadow-sm)' }}>
             <CardContent>
               <Box
                 sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', cursor: 'pointer' }}
                 onClick={() => setExpandedId(expandedId === log.id ? null : log.id)}
               >
                 <Box sx={{ flex: 1 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
+                  <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5, color: 'var(--text)' }}>
                     {log.workoutName}
                   </Typography>
-                  <Typography variant="caption" sx={{ color: colors.neutral.darkGray }}>
+                  <Typography variant="caption" sx={{ color: 'var(--text-secondary)' }}>
                     {new Date(log.completedAt).toLocaleDateString('en-US', {
                       weekday: 'long',
                       year: 'numeric',
@@ -192,7 +201,7 @@ export default function LogPage() {
               </Box>
 
               <Collapse in={expandedId === log.id}>
-                <Box sx={{ mt: 2, pt: 2, borderTop: '1px solid #E4E4E4' }}>
+                <Box sx={{ mt: 2, pt: 2, borderTop: '1px solid var(--border)' }}>
                   {log.exercises.map((exercise, idx) => (
                     <Box key={idx} sx={{ mb: 2 }}>
                       <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1 }}>

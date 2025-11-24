@@ -25,10 +25,12 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SaveIcon from '@mui/icons-material/Save';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator';
+import EditIcon from '@mui/icons-material/Edit';
 import { loadWorkouts, saveWorkouts, Workout, Exercise, Set } from '../_lib/storage';
 import { EXERCISES, BODY_PARTS, EQUIPMENT, TAGS, ExerciseTemplate } from '../_data/exercises';
 import { WORKOUT_TEMPLATES } from '../_data/templates';
 import { colors } from '../_theme/theme';
+import EditSetModal from '../_components/EditSetModal';
 
 function BuilderContent() {
   const router = useRouter();
@@ -46,6 +48,11 @@ function BuilderContent() {
   const [hasChanges, setHasChanges] = useState(false);
   const [showTemplates, setShowTemplates] = useState(false);
   const [showExercises, setShowExercises] = useState(false);
+  const [editingSet, setEditingSet] = useState<{
+    exerciseId: string;
+    set: Set;
+    setIndex: number;
+  } | null>(null);
   const [exerciseFilters, setExerciseFilters] = useState({
     bodyPart: 'All',
     equipment: 'All',
@@ -197,13 +204,38 @@ function BuilderContent() {
   return (
     <Box sx={{ minHeight: '100vh', bgcolor: 'var(--bg)', p: 3 }}>
       {/* Header */}
-      <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
-        <Button variant="outlined" onClick={() => router.back()}>
+      <Box sx={{ display: 'flex', gap: 2.5, mb: 3, alignItems: 'center' }}>
+        <Button
+          variant="outlined"
+          onClick={() => router.back()}
+          sx={{
+            minWidth: '80px',
+            height: '48px',
+            fontWeight: 600,
+            borderColor: 'var(--border)',
+            color: 'var(--text)',
+            '&:hover': {
+              borderColor: 'var(--accent-orange)',
+              bgcolor: 'rgba(255, 140, 66, 0.05)',
+            },
+          }}
+        >
           Back
         </Button>
         <Button
           variant="outlined"
           onClick={() => setShowTemplates(true)}
+          sx={{
+            minWidth: '100px',
+            height: '48px',
+            fontWeight: 600,
+            borderColor: 'var(--border)',
+            color: 'var(--text)',
+            '&:hover': {
+              borderColor: 'var(--accent-orange)',
+              bgcolor: 'rgba(255, 140, 66, 0.05)',
+            },
+          }}
         >
           Templates
         </Button>
@@ -212,7 +244,23 @@ function BuilderContent() {
           startIcon={<SaveIcon />}
           onClick={handleSave}
           disabled={!hasChanges}
-          sx={{ ml: 'auto' }}
+          sx={{
+            ml: 'auto',
+            minWidth: '100px',
+            height: '48px',
+            px: 2,
+            fontWeight: 600,
+            background: 'var(--btn-primary-bg)',
+            color: 'var(--btn-primary-text)',
+            '&:hover': {
+              background: 'var(--btn-primary-hover)',
+            },
+            '&:disabled': {
+              opacity: 0.5,
+              background: 'var(--btn-primary-bg)',
+              color: 'var(--btn-primary-text)',
+            },
+          }}
         >
           Save
         </Button>
@@ -221,7 +269,17 @@ function BuilderContent() {
             variant="contained"
             startIcon={<PlayArrowIcon />}
             onClick={handlePlay}
-            sx={{ background: colors.gradients.orangeToGold }}
+            sx={{
+              minWidth: '100px',
+              height: '48px',
+              px: 2,
+              fontWeight: 600,
+              background: 'var(--btn-primary-bg)',
+              color: 'var(--btn-primary-text)',
+              '&:hover': {
+                background: 'var(--btn-primary-hover)',
+              },
+            }}
           >
             Start
           </Button>
@@ -324,86 +382,75 @@ function BuilderContent() {
                     display: 'flex',
                     gap: 1.5,
                     alignItems: 'center',
-                    p: 1.5,
+                    justifyContent: 'space-between',
+                    p: 2,
                     borderRadius: '10px',
-                    bgcolor: '#F9F9F9',
+                    bgcolor: 'var(--tile-bg)',
+                    border: '1px solid var(--tile-border)',
                     transition: 'all 0.2s ease',
+                    cursor: 'pointer',
                     '&:hover': {
-                      bgcolor: '#F5F5F5',
+                      borderColor: 'var(--accent-orange)',
+                      boxShadow: '0 2px 8px var(--shadow-sm)',
                     },
                   }}
+                  onClick={() =>
+                    setEditingSet({
+                      exerciseId: exercise.id,
+                      set,
+                      setIndex: setIdx,
+                    })
+                  }
                 >
-                  <Typography variant="caption" sx={{ minWidth: 60, fontWeight: 600, color: colors.neutral.darkGray }}>
-                    Set {setIdx + 1}
-                  </Typography>
-
-                  <FormControl size="small" sx={{ minWidth: 130 }}>
-                    <Select
-                      value={set.type}
-                      onChange={(e) => handleUpdateSet(exercise.id, set.id, { type: e.target.value as any })}
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, flex: 1 }}>
+                    <Typography
+                      variant="body2"
+                      sx={{ minWidth: 60, fontWeight: 700, color: 'var(--text)' }}
+                    >
+                      Set {setIdx + 1}
+                    </Typography>
+                    <Box
                       sx={{
-                        '& .MuiSelect-select': {
-                          py: 1.25,
-                        },
+                        display: 'flex',
+                        gap: 1,
+                        alignItems: 'center',
+                        flex: 1,
+                        flexWrap: 'wrap',
                       }}
                     >
-                      <MenuItem value="standard">Standard</MenuItem>
-                      <MenuItem value="warm-up">Warm-up</MenuItem>
-                      <MenuItem value="drop">Drop</MenuItem>
-                      <MenuItem value="AMRAP">AMRAP</MenuItem>
-                      <MenuItem value="HIIT">HIIT</MenuItem>
-                    </Select>
-                  </FormControl>
-
-                  <TextField
-                    size="small"
-                    type="number"
-                    value={set.reps || ''}
-                    onChange={(e) =>
-                      handleUpdateSet(exercise.id, set.id, { reps: parseInt(e.target.value) || 0 })
-                    }
-                    placeholder="Reps"
-                    sx={{
-                      width: 90,
-                      '& input': {
-                        py: 1.25,
-                        fontSize: '0.95rem',
-                        fontWeight: 500,
-                      },
-                    }}
-                  />
-
-                  <TextField
-                    size="small"
-                    type="number"
-                    value={set.weight || ''}
-                    onChange={(e) =>
-                      handleUpdateSet(exercise.id, set.id, { weight: parseInt(e.target.value) || 0 })
-                    }
-                    placeholder="Weight"
-                    sx={{
-                      width: 90,
-                      '& input': {
-                        py: 1.25,
-                        fontSize: '0.95rem',
-                        fontWeight: 500,
-                      },
-                    }}
-                  />
-
-                  <IconButton
-                    size="small"
-                    onClick={() => handleDeleteSet(exercise.id, set.id)}
-                    sx={{
-                      color: '#F44336',
-                      p: 1,
-                      '&:hover': {
-                        bgcolor: 'rgba(244, 67, 54, 0.1)',
-                      },
-                    }}
-                  >
-                    <DeleteIcon fontSize="small" />
-                  </IconButton>
+                      <Typography
+                        variant="body2"
+                        sx={{ color: 'var(--text-secondary)', fontWeight: 500 }}
+                      >
+                        {set.type === 'warm-up' ? 'Warm-up' : set.type === 'AMRAP' ? 'AMRAP' : set.type === 'HIIT' ? 'HIIT' : set.type === 'drop' ? 'Drop' : 'Standard'}
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{ color: 'var(--text-secondary)' }}
+                      >
+                        ·
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{ color: 'var(--text)', fontWeight: 600 }}
+                      >
+                        {set.reps} reps
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{ color: 'var(--text-secondary)' }}
+                      >
+                        ·
+                      </Typography>
+                      <Typography
+                        variant="body2"
+                        sx={{ color: 'var(--text)', fontWeight: 600 }}
+                      >
+                        {set.weight} lbs
+                      </Typography>
+                    </Box>
+                  </Box>
+                  <EditIcon sx={{ color: 'var(--accent-orange)', fontSize: '1.25rem' }} />
                 </Box>
               ))}
 
@@ -676,6 +723,23 @@ function BuilderContent() {
           </Button>
         </DialogActions>
       </Dialog>
+
+      {/* Edit Set Modal */}
+      {editingSet && (
+        <EditSetModal
+          open={!!editingSet}
+          onClose={() => setEditingSet(null)}
+          set={editingSet.set}
+          setIndex={editingSet.setIndex}
+          onSave={(updates) =>
+            handleUpdateSet(editingSet.exerciseId, editingSet.set.id, updates)
+          }
+          onDelete={() => {
+            handleDeleteSet(editingSet.exerciseId, editingSet.set.id);
+            setEditingSet(null);
+          }}
+        />
+      )}
     </Box>
   );
 }

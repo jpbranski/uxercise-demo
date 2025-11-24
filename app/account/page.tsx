@@ -344,17 +344,32 @@ export default function AccountPage() {
       </Card>
 
       {/* Actions */}
-      <Box sx={{ display: 'flex', gap: 2, mb: 2 }}>
+      <Box sx={{ display: 'flex', gap: 2, mb: 3, pb: 2 }}>
         <Button
           fullWidth
           variant="contained"
           onClick={handleSave}
           disabled={!hasChanges}
           sx={{
-            py: 1.5,
+            py: 1.75,
+            minHeight: '48px',
             fontSize: '1rem',
             fontWeight: 600,
+            background: 'var(--btn-primary-bg)',
+            color: 'var(--btn-primary-text)',
             boxShadow: hasChanges ? '0 4px 12px rgba(255, 140, 66, 0.3)' : 'none',
+            '&:hover': {
+              background: 'var(--btn-primary-hover)',
+            },
+            '&:focus-visible': {
+              outline: '3px solid var(--accent-orange)',
+              outlineOffset: '2px',
+            },
+            '&:disabled': {
+              opacity: 0.5,
+              background: 'var(--btn-primary-bg)',
+              color: 'var(--btn-primary-text)',
+            },
           }}
         >
           Save Changes
@@ -364,14 +379,21 @@ export default function AccountPage() {
           variant="outlined"
           onClick={handleReset}
           sx={{
-            py: 1.5,
+            py: 1.75,
+            minHeight: '48px',
             fontSize: '1rem',
             fontWeight: 600,
-            borderColor: colors.primary.main,
-            color: colors.primary.main,
+            borderColor: 'var(--accent-orange)',
+            color: 'var(--accent-orange)',
+            borderWidth: '2px',
             '&:hover': {
-              borderColor: colors.primary.dark,
+              borderColor: 'var(--accent-orange-dark)',
               bgcolor: 'rgba(255, 140, 66, 0.05)',
+              borderWidth: '2px',
+            },
+            '&:focus-visible': {
+              outline: '3px solid var(--accent-orange)',
+              outlineOffset: '2px',
             },
           }}
         >

@@ -80,13 +80,22 @@ export default function WorkoutsPage() {
     <Box sx={{ minHeight: '100vh', bgcolor: 'var(--bg)', p: 3 }}>
       {/* Header */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-        <Typography variant="h5" sx={{ fontWeight: 700 }}>
+        <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text)' }}>
           My Workouts
         </Typography>
         <Button
           variant="contained"
           startIcon={<AddIcon />}
           onClick={() => router.push('/builder')}
+          sx={{
+            minHeight: '48px',
+            px: 2,
+            background: 'var(--btn-primary-bg)',
+            color: 'var(--btn-primary-text)',
+            '&:hover': {
+              background: 'var(--btn-primary-hover)',
+            },
+          }}
         >
           New
         </Button>
@@ -126,15 +135,24 @@ export default function WorkoutsPage() {
 
       {/* Workouts List */}
       {filteredWorkouts.length === 0 ? (
-        <Card sx={{ borderRadius: '14px' }}>
+        <Card sx={{ borderRadius: '14px', bgcolor: 'var(--card-bg)' }}>
           <CardContent sx={{ textAlign: 'center', py: 4 }}>
-            <Typography variant="body1" sx={{ color: colors.neutral.darkGray, mb: 2 }}>
+            <Typography variant="body1" sx={{ color: 'var(--text-secondary)', mb: 2 }}>
               {searchTerm ? 'No workouts found' : 'No workouts yet'}
             </Typography>
             <Button
               variant="contained"
               startIcon={<AddIcon />}
               onClick={() => router.push('/builder')}
+              sx={{
+                minHeight: '48px',
+                px: 2,
+                background: 'var(--btn-primary-bg)',
+                color: 'var(--btn-primary-text)',
+                '&:hover': {
+                  background: 'var(--btn-primary-hover)',
+                },
+              }}
             >
               Create Your First Workout
             </Button>
@@ -142,12 +160,12 @@ export default function WorkoutsPage() {
         </Card>
       ) : (
         filteredWorkouts.map(workout => (
-          <Card key={workout.id} sx={{ mb: 2, borderRadius: '14px' }}>
+          <Card key={workout.id} sx={{ mb: 2, borderRadius: '14px', bgcolor: 'var(--card-bg)', boxShadow: '0 2px 12px var(--shadow-sm)' }}>
             <CardContent>
               <Box sx={{ mb: 2 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', mb: 1 }}>
                   <Box sx={{ flex: 1 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5, color: 'var(--text)' }}>
                       {workout.name}
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap', mb: 1 }}>
@@ -164,7 +182,7 @@ export default function WorkoutsPage() {
                         <Chip key={tag} label={tag} size="small" />
                       ))}
                     </Box>
-                    <Typography variant="caption" sx={{ color: colors.neutral.darkGray }}>
+                    <Typography variant="caption" sx={{ color: 'var(--text-secondary)' }}>
                       {workout.estimatedDuration} min · {workout.exercises.length} exercises
                     </Typography>
                   </Box>
@@ -197,10 +215,10 @@ export default function WorkoutsPage() {
                 </Box>
 
                 {/* Schedule Days */}
-                <Box sx={{ mt: 2, pt: 2, borderTop: '1px solid #E4E4E4' }}>
+                <Box sx={{ mt: 2, pt: 2, borderTop: '1px solid var(--border)' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 1 }}>
-                    <CalendarTodayIcon sx={{ fontSize: 16, color: colors.neutral.darkGray }} />
-                    <Typography variant="caption" sx={{ color: colors.neutral.darkGray }}>
+                    <CalendarTodayIcon sx={{ fontSize: 16, color: 'var(--text-secondary)' }} />
+                    <Typography variant="caption" sx={{ color: 'var(--text-secondary)' }}>
                       Schedule:
                     </Typography>
                   </Box>

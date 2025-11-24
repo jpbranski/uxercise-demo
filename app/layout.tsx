@@ -66,15 +66,19 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 style={{
                   width: `${devicePreset.width}px`,
                   height: `${devicePreset.height}px`,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  overflow: 'hidden',
                 }}
               >
                 <div
                   className="device-screen"
                   style={{
+                    flex: 1,
                     width: '100%',
-                    height: '100%',
                     position: 'relative',
                     overflowY: 'auto',
+                    overflowX: 'hidden',
                   }}
                 >
                   <div style={{
@@ -83,8 +87,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   }}>
                     {children}
                   </div>
-                  <BottomNav deviceMode={deviceMode} />
                 </div>
+                <BottomNav deviceMode={deviceMode} />
               </div>
             </div>
           ) : (
