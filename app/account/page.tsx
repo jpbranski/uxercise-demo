@@ -122,7 +122,7 @@ export default function AccountPage() {
                 margin: '0 auto',
                 background: colors.gradients.orangeToGold,
                 fontSize: '3.5rem',
-                border: '4px solid #FFF',
+                border: '4px solid var(--card-bg)',
                 boxShadow: '0 4px 16px rgba(0, 0, 0, 0.12)',
               }}
             >
@@ -134,7 +134,7 @@ export default function AccountPage() {
                 bottom: 4,
                 right: 4,
                 bgcolor: colors.primary.main,
-                color: '#FFF',
+                color: 'var(--btn-primary-text)',
                 width: 44,
                 height: 44,
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
@@ -282,13 +282,13 @@ export default function AccountPage() {
                 boxShadow: '0 2px 8px var(--shadow-md)',
               }}
             >
-              <Typography variant="caption" sx={{ color: '#1A1A1A', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+              <Typography variant="caption" sx={{ color: 'var(--text-on-gradient)', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                 Body Mass Index
               </Typography>
-              <Typography variant="h3" sx={{ fontWeight: 700, color: '#1A1A1A', my: 1 }}>
+              <Typography variant="h3" sx={{ fontWeight: 700, color: 'var(--text-on-gradient)', my: 1 }}>
                 {bmi}
               </Typography>
-              <Typography variant="body2" sx={{ color: '#2A2A2A', fontWeight: 500 }}>
+              <Typography variant="body2" sx={{ color: 'var(--text-on-gradient)', fontWeight: 500 }}>
                 {getBMICategory(bmi)}
               </Typography>
             </Box>

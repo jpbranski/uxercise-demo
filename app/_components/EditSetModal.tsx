@@ -67,7 +67,8 @@ export default function EditSetModal({
       PaperProps={{
         sx: {
           borderRadius: '16px',
-          bgcolor: 'var(--card-bg)',
+          backgroundColor: 'var(--surface)',
+          color: 'var(--text)',
         },
       }}
     >
@@ -197,7 +198,7 @@ export default function EditSetModal({
           <Button
             onClick={onClose}
             sx={{
-              color: 'var(--text-secondary)',
+              color: 'var(--text-muted)',
               fontWeight: 600,
             }}
           >

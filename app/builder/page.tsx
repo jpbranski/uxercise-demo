@@ -332,8 +332,8 @@ function BuilderContent() {
                   setHasChanges(true);
                 }}
                 sx={{
-                  bgcolor: workout.tags.includes(tag) ? colors.primary.main : '#E4E4E4',
-                  color: workout.tags.includes(tag) ? '#FFF' : colors.neutral.darkGray,
+                  bgcolor: workout.tags.includes(tag) ? colors.primary.main : 'var(--surface)',
+                  color: workout.tags.includes(tag) ? '#FFF' : 'var(--text)',
                   cursor: 'pointer',
                 }}
               />
@@ -469,7 +469,7 @@ function BuilderContent() {
         {workout.exercises.length === 0 && (
           <Card sx={{ borderRadius: '14px' }}>
             <CardContent sx={{ textAlign: 'center', py: 4 }}>
-              <Typography variant="body2" sx={{ color: colors.neutral.darkGray }}>
+              <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                 No exercises added yet. Click "Add Exercise" to get started!
               </Typography>
             </CardContent>
@@ -487,14 +487,16 @@ function BuilderContent() {
           sx: {
             borderRadius: '16px',
             maxHeight: '80vh',
+            backgroundColor: 'var(--surface)',
+            color: 'var(--text)',
           },
         }}
       >
         <DialogTitle sx={{ pb: 2, pt: 3, px: 3 }}>
-          <Typography variant="h5" sx={{ fontWeight: 700, color: colors.neutral.charcoal }}>
+          <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text)' }}>
             Choose Template
           </Typography>
-          <Typography variant="body2" sx={{ color: colors.neutral.darkGray, mt: 0.5 }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.5 }}>
             Select a pre-built workout to get started quickly
           </Typography>
         </DialogTitle>
@@ -518,7 +520,7 @@ function BuilderContent() {
                     onClick={() => handleTemplateSelect(template)}
                   >
                     <CardContent sx={{ p: 2.5 }}>
-                      <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: colors.neutral.charcoal }}>
+                      <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: 'var(--text)' }}>
                         {template.name}
                       </Typography>
                       <Box sx={{ display: 'flex', gap: 0.75, mb: 1.5, flexWrap: 'wrap' }}>
@@ -536,13 +538,14 @@ function BuilderContent() {
                             label={tag}
                             size="small"
                             sx={{
-                              bgcolor: '#F0F0F0',
+                              bgcolor: 'var(--surface)',
+                              color: 'var(--text)',
                               fontWeight: 500,
                             }}
                           />
                         ))}
                       </Box>
-                      <Typography variant="body2" sx={{ color: colors.neutral.darkGray, fontWeight: 500 }}>
+                      <Typography variant="body2" sx={{ color: 'var(--text-muted)', fontWeight: 500 }}>
                         {template.estimatedDuration} min · {template.exercises.length} exercises
                       </Typography>
                     </CardContent>
@@ -552,11 +555,11 @@ function BuilderContent() {
             </Grid>
           </Box>
         </DialogContent>
-        <DialogActions sx={{ px: 3, py: 2.5, borderTop: '1px solid #E4E4E4' }}>
+        <DialogActions sx={{ px: 3, py: 2.5, borderTop: '1px solid var(--border)' }}>
           <Button
             onClick={() => setShowTemplates(false)}
             sx={{
-              color: colors.neutral.darkGray,
+              color: 'var(--text-muted)',
               fontWeight: 600,
               px: 3,
             }}
@@ -576,14 +579,16 @@ function BuilderContent() {
           sx: {
             borderRadius: '16px',
             maxHeight: '85vh',
+            backgroundColor: 'var(--surface)',
+            color: 'var(--text)',
           },
         }}
       >
         <DialogTitle sx={{ pb: 2, pt: 3, px: 3 }}>
-          <Typography variant="h5" sx={{ fontWeight: 700, color: colors.neutral.charcoal }}>
+          <Typography variant="h5" sx={{ fontWeight: 700, color: 'var(--text)' }}>
             Add Exercise
           </Typography>
-          <Typography variant="body2" sx={{ color: colors.neutral.darkGray, mt: 0.5 }}>
+          <Typography variant="body2" sx={{ color: 'var(--text-muted)', mt: 0.5 }}>
             Browse 100+ exercises or use filters to find the perfect movement
           </Typography>
         </DialogTitle>
@@ -664,7 +669,7 @@ function BuilderContent() {
           <Box sx={{ maxHeight: '45vh', overflowY: 'auto', pr: 1 }}>
             {filteredExercises.length === 0 ? (
               <Box sx={{ textAlign: 'center', py: 4 }}>
-                <Typography variant="body2" sx={{ color: colors.neutral.darkGray }}>
+                <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                   No exercises found. Try adjusting your filters.
                 </Typography>
               </Box>
@@ -678,8 +683,9 @@ function BuilderContent() {
                     borderRadius: '12px',
                     transition: 'all 0.2s ease',
                     border: '1px solid transparent',
+                    bgcolor: 'var(--card-bg)',
                     '&:hover': {
-                      bgcolor: '#F9F9F9',
+                      bgcolor: 'var(--surface)',
                       borderColor: colors.primary.main,
                       boxShadow: '0 2px 8px rgba(255, 140, 66, 0.15)',
                     },
@@ -687,7 +693,7 @@ function BuilderContent() {
                   onClick={() => handleAddExercise(ex)}
                 >
                   <CardContent sx={{ py: 2, px: 2.5 }}>
-                    <Typography variant="body1" sx={{ fontWeight: 600, mb: 0.75, color: colors.neutral.charcoal }}>
+                    <Typography variant="body1" sx={{ fontWeight: 600, mb: 0.75, color: 'var(--text)' }}>
                       {ex.name}
                     </Typography>
                     <Box sx={{ display: 'flex', gap: 0.5, flexWrap: 'wrap' }}>
@@ -697,7 +703,8 @@ function BuilderContent() {
                           label={part}
                           size="small"
                           sx={{
-                            bgcolor: '#F0F0F0',
+                            bgcolor: 'var(--surface)',
+                            color: 'var(--text)',
                             fontWeight: 500,
                             fontSize: '0.7rem',
                           }}
@@ -710,11 +717,11 @@ function BuilderContent() {
             )}
           </Box>
         </DialogContent>
-        <DialogActions sx={{ px: 3, py: 2.5, borderTop: '1px solid #E4E4E4' }}>
+        <DialogActions sx={{ px: 3, py: 2.5, borderTop: '1px solid var(--border)' }}>
           <Button
             onClick={() => setShowExercises(false)}
             sx={{
-              color: colors.neutral.darkGray,
+              color: 'var(--text-muted)',
               fontWeight: 600,
               px: 3,
             }}
@@ -759,7 +766,7 @@ function IconButton(props: any) {
         justifyContent: 'center',
         borderRadius: '50%',
         '&:hover': {
-          bgcolor: '#F5F5F5',
+          bgcolor: 'var(--surface)',
         },
         ...props.sx,
       }}
