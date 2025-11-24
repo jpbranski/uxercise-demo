@@ -185,7 +185,7 @@ export default function EditSetModal({
           onClick={handleDelete}
           startIcon={<DeleteIcon />}
           sx={{
-            color: '#F44336',
+            color: 'var(--error-red)',
             fontWeight: 600,
             '&:hover': {
               bgcolor: 'rgba(244, 67, 54, 0.1)',

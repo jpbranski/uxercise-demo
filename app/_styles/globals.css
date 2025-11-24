@@ -43,6 +43,9 @@
 
   /* Text color for gradient backgrounds (always dark for readability) */
   --text-on-gradient: #1A1A1A;
+
+  /* Error color */
+  --error-red: #F44336;
 }
 
 .theme-dark {
@@ -80,6 +83,9 @@
 
   /* Text color for gradient backgrounds (always dark for readability) */
   --text-on-gradient: #1A1A1A;
+
+  /* Error color */
+  --error-red: #EF5350;
 }
 
 html,

@@ -138,7 +138,7 @@ export default function LogPage() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           InputProps={{
-            startAdornment: <SearchIcon sx={{ mr: 1, color: colors.neutral.darkGray }} />,
+            startAdornment: <SearchIcon sx={{ mr: 1, color: 'var(--muted-text)' }} />,
           }}
           sx={{ mb: 2 }}
         />
@@ -149,11 +149,11 @@ export default function LogPage() {
               label={range === 'all' ? 'All Time' : range === 'week' ? 'This Week' : 'This Month'}
               onClick={() => setDateRange(range)}
               sx={{
-                bgcolor: dateRange === range ? colors.primary.main : '#E4E4E4',
-                color: dateRange === range ? '#FFF' : colors.neutral.darkGray,
+                bgcolor: dateRange === range ? colors.primary.main : 'var(--surface)',
+                color: dateRange === range ? '#FFF' : 'var(--text)',
                 cursor: 'pointer',
                 '&:hover': {
-                  bgcolor: dateRange === range ? colors.primary.dark : '#D0D0D0',
+                  bgcolor: dateRange === range ? colors.primary.dark : 'var(--tile-bg)',
                 },
               }}
             />
@@ -215,7 +215,7 @@ export default function LogPage() {
                               display: 'flex',
                               gap: 2,
                               p: 1,
-                              bgcolor: set.completed ? '#F0F9FF' : '#FAFAFA',
+                              bgcolor: set.completed ? 'var(--tile-bg)' : 'var(--surface)',
                               borderRadius: '8px',
                               fontSize: '0.875rem',
                             }}
@@ -247,7 +247,7 @@ export default function LogPage() {
                     </Box>
                   ))}
                   {log.notes && (
-                    <Box sx={{ mt: 2, p: 2, bgcolor: '#FFFBF0', borderRadius: '8px' }}>
+                    <Box sx={{ mt: 2, p: 2, bgcolor: 'var(--tile-bg)', borderRadius: '8px' }}>
                       <Typography variant="caption" sx={{ fontWeight: 600, display: 'block', mb: 0.5 }}>
                         Notes:
                       </Typography>
