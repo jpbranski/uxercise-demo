@@ -14,6 +14,7 @@
   --text: #1A1A1A;
   --text-secondary: #666666;
   --text-muted: #999999;
+  --text-disabled: #CCCCCC;
   --border: #E4E4E4;
   --card-bg: #FFFFFF;
   --tile-bg: #FFFFFF;
@@ -24,9 +25,14 @@
   --nav-icon-active: #FF8C42;
   --input-bg: #FFFFFF;
   --input-border: #E4E4E4;
+  --input-border-hover: #b5b5b5;
+  --input-border-disabled: #E4E4E4;
   --input-placeholder: #999999;
+  --accent: #FF8C42;
   --accent-orange: #FF8C42;
   --accent-orange-dark: #E67A35;
+  --accent-orange-shadow: rgba(255, 140, 66, 0.3);
+  --accent-orange-bg-light: rgba(255, 140, 66, 0.05);
   --accent-gold-1: #C8A951;
   --accent-gold-2: #D4B969;
   --accent-gold-3: #E7CF8B;
@@ -43,6 +49,37 @@
 
   /* Text color for gradient backgrounds (always dark for readability) */
   --text-on-gradient: #1A1A1A;
+
+  /* Status colors */
+  --error-red: #F44336;
+  --error-red-hover-bg: rgba(244, 67, 54, 0.1);
+  --success-green: #4CAF50;
+  --warning-orange: #FF9800;
+
+  /* Player overlay mode (dark overlay for workout player) */
+  --player-overlay-bg: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.85) 100%);
+  --player-text: #FFFFFF;
+  --player-text-muted: rgba(255, 255, 255, 0.7);
+  --player-border: rgba(255, 255, 255, 0.1);
+  --player-card-bg: rgba(255, 255, 255, 0.05);
+  --player-button-bg: rgba(255, 255, 255, 0.1);
+  --player-button-hover: rgba(255, 255, 255, 0.2);
+  --player-input-border: rgba(255, 255, 255, 0.3);
+  --player-input-border-hover: rgba(255, 255, 255, 0.5);
+  --player-placeholder: rgba(255, 255, 255, 0.6);
+
+  /* DevTools panel (fixed dark theme regardless of app theme) */
+  --devtools-bg: linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 100%);
+  --devtools-text: #FFFFFF;
+  --devtools-text-gold: #E7CF8B;
+  --devtools-border: #FF8C42;
+  --devtools-button-bg: #FF8C42;
+  --devtools-button-text: #FFF;
+  --devtools-button-inactive: transparent;
+  --devtools-button-hover: rgba(231, 207, 139, 0.1);
+  --devtools-select-bg: #2A2A2A;
+  --devtools-version-text: rgba(255, 255, 255, 0.6);
+  --devtools-version-border: rgba(255, 255, 255, 0.2);
 }
 
 .theme-dark {
@@ -51,6 +88,7 @@
   --text: #FFFFFF;
   --text-secondary: #B0B0B0;
   --text-muted: #BBBBBB;
+  --text-disabled: #666666;
   --border: #2A2A2A;
   --card-bg: #1A1A1A;
   --tile-bg: #181818;
@@ -61,9 +99,14 @@
   --nav-icon-active: #F77C32;
   --input-bg: #1A1A1A;
   --input-border: #2A2A2A;
+  --input-border-hover: #666;
+  --input-border-disabled: #2A2A2A;
   --input-placeholder: #666666;
+  --accent: #F77C32;
   --accent-orange: #F77C32;
   --accent-orange-dark: #E06A25;
+  --accent-orange-shadow: rgba(247, 124, 50, 0.3);
+  --accent-orange-bg-light: rgba(247, 124, 50, 0.05);
   --accent-gold-1: #A7924F;
   --accent-gold-2: #B8A463;
   --accent-gold-3: #C9B97C;
@@ -80,6 +123,37 @@
 
   /* Text color for gradient backgrounds (always dark for readability) */
   --text-on-gradient: #1A1A1A;
+
+  /* Status colors */
+  --error-red: #EF5350;
+  --error-red-hover-bg: rgba(239, 83, 80, 0.1);
+  --success-green: #66BB6A;
+  --warning-orange: #FFA726;
+
+  /* Player overlay mode (dark overlay for workout player) */
+  --player-overlay-bg: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(42, 42, 42, 0.85) 100%);
+  --player-text: #FFFFFF;
+  --player-text-muted: rgba(255, 255, 255, 0.7);
+  --player-border: rgba(255, 255, 255, 0.1);
+  --player-card-bg: rgba(255, 255, 255, 0.05);
+  --player-button-bg: rgba(255, 255, 255, 0.1);
+  --player-button-hover: rgba(255, 255, 255, 0.2);
+  --player-input-border: rgba(255, 255, 255, 0.3);
+  --player-input-border-hover: rgba(255, 255, 255, 0.5);
+  --player-placeholder: rgba(255, 255, 255, 0.6);
+
+  /* DevTools panel (fixed dark theme regardless of app theme) */
+  --devtools-bg: linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 100%);
+  --devtools-text: #FFFFFF;
+  --devtools-text-gold: #E7CF8B;
+  --devtools-border: #FF8C42;
+  --devtools-button-bg: #FF8C42;
+  --devtools-button-text: #FFF;
+  --devtools-button-inactive: transparent;
+  --devtools-button-hover: rgba(231, 207, 139, 0.1);
+  --devtools-select-bg: #2A2A2A;
+  --devtools-version-text: rgba(255, 255, 255, 0.6);
+  --devtools-version-border: rgba(255, 255, 255, 0.2);
 }
 
 html,

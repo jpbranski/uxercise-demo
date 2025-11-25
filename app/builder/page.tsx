@@ -29,7 +29,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import { loadWorkouts, saveWorkouts, Workout, Exercise, Set } from '../_lib/storage';
 import { EXERCISES, BODY_PARTS, EQUIPMENT, TAGS, ExerciseTemplate } from '../_data/exercises';
 import { WORKOUT_TEMPLATES } from '../_data/templates';
-import { colors } from '../_theme/theme';
 import EditSetModal from '../_components/EditSetModal';
 
 function BuilderContent() {
@@ -216,7 +215,7 @@ function BuilderContent() {
             color: 'var(--text)',
             '&:hover': {
               borderColor: 'var(--accent-orange)',
-              bgcolor: 'rgba(255, 140, 66, 0.05)',
+              bgcolor: 'var(--accent-orange-bg-light)',
             },
           }}
         >
@@ -233,7 +232,7 @@ function BuilderContent() {
             color: 'var(--text)',
             '&:hover': {
               borderColor: 'var(--accent-orange)',
-              bgcolor: 'rgba(255, 140, 66, 0.05)',
+              bgcolor: 'var(--accent-orange-bg-light)',
             },
           }}
         >
@@ -287,7 +286,7 @@ function BuilderContent() {
       </Box>
 
       {/* Workout Info */}
-      <Card sx={{ mb: 3, borderRadius: '14px' }}>
+      <Card sx={{ mb: 3, borderRadius: '14px', bgcolor: 'var(--card-bg)' }}>
         <CardContent>
           <TextField
             fullWidth
@@ -296,7 +295,21 @@ function BuilderContent() {
               setWorkout({ ...workout, name: e.target.value });
               setHasChanges(true);
             }}
-            sx={{ mb: 2, '& input': { fontSize: '1.5rem', fontWeight: 600 } }}
+            sx={{
+              mb: 2,
+              '& input': { fontSize: '1.5rem', fontWeight: 600, color: 'var(--text)' },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'var(--input-border)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'var(--input-border-hover)',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'var(--accent-orange)',
+                },
+              },
+            }}
           />
 
           <FormControl fullWidth sx={{ mb: 2 }}>
@@ -332,8 +345,8 @@ function BuilderContent() {
                   setHasChanges(true);
                 }}
                 sx={{
-                  bgcolor: workout.tags.includes(tag) ? colors.primary.main : 'var(--surface)',
-                  color: workout.tags.includes(tag) ? '#FFF' : 'var(--text)',
+                  bgcolor: workout.tags.includes(tag) ? 'var(--accent-orange)' : 'var(--surface)',
+                  color: workout.tags.includes(tag) ? 'var(--btn-primary-text)' : 'var(--text)',
                   cursor: 'pointer',
                 }}
               />
@@ -358,17 +371,17 @@ function BuilderContent() {
         </Box>
 
         {workout.exercises.map((exercise, idx) => (
-          <Card key={exercise.id} sx={{ mb: 2, borderRadius: '14px' }}>
+          <Card key={exercise.id} sx={{ mb: 2, borderRadius: '14px', bgcolor: 'var(--card-bg)' }}>
             <CardContent>
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
-                <DragIndicatorIcon sx={{ color: colors.neutral.darkGray, cursor: 'grab' }} />
+                <DragIndicatorIcon sx={{ color: 'var(--text-muted)', cursor: 'grab' }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, flex: 1 }}>
                   {idx + 1}. {exercise.name}
                 </Typography>
                 <IconButton
                   size="small"
                   onClick={() => handleDeleteExercise(exercise.id)}
-                  sx={{ color: '#F44336' }}
+                  sx={{ color: 'var(--error-red)' }}
                 >
                   <DeleteIcon />
                 </IconButton>
@@ -467,7 +480,7 @@ function BuilderContent() {
         ))}
 
         {workout.exercises.length === 0 && (
-          <Card sx={{ borderRadius: '14px' }}>
+          <Card sx={{ borderRadius: '14px', bgcolor: 'var(--card-bg)' }}>
             <CardContent sx={{ textAlign: 'center', py: 4 }}>
               <Typography variant="body2" sx={{ color: 'var(--text-muted)' }}>
                 No exercises added yet. Click "Add Exercise" to get started!
@@ -512,8 +525,8 @@ function BuilderContent() {
                       transition: 'all 0.2s ease',
                       border: '1px solid transparent',
                       '&:hover': {
-                        boxShadow: '0 4px 16px rgba(255, 140, 66, 0.2)',
-                        borderColor: colors.primary.main,
+                        boxShadow: '0 4px 16px var(--shadow-md)',
+                        borderColor: 'var(--accent-orange)',
                         transform: 'translateY(-2px)',
                       },
                     }}
@@ -528,7 +541,7 @@ function BuilderContent() {
                           label={template.difficulty}
                           size="small"
                           sx={{
-                            bgcolor: colors.gradients.goldToAmber,
+                            bgcolor: 'linear-gradient(135deg, var(--accent-gold-1) 0%, var(--accent-gold-2) 50%, var(--accent-gold-3) 100%)',
                             fontWeight: 600,
                           }}
                         />
@@ -605,6 +618,18 @@ function BuilderContent() {
                 mb: 2.5,
                 '& .MuiOutlinedInput-root': {
                   borderRadius: '12px',
+                  '& fieldset': {
+                    borderColor: 'var(--input-border)',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: 'var(--input-border-hover)',
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: 'var(--accent-orange)',
+                  },
+                },
+                input: {
+                  color: 'var(--text)',
                 },
               }}
             />
@@ -686,8 +711,8 @@ function BuilderContent() {
                     bgcolor: 'var(--card-bg)',
                     '&:hover': {
                       bgcolor: 'var(--surface)',
-                      borderColor: colors.primary.main,
-                      boxShadow: '0 2px 8px rgba(255, 140, 66, 0.15)',
+                      borderColor: 'var(--accent-orange)',
+                      boxShadow: '0 2px 8px var(--shadow-sm)',
                     },
                   }}
                   onClick={() => handleAddExercise(ex)}

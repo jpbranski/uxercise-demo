@@ -48,21 +48,21 @@ export default function DevToolsPanel({
         left: 0,
         right: 0,
         zIndex: 2000,
-        background: 'linear-gradient(135deg, #1C1C1C 0%, #2A2A2A 100%)',
-        color: '#FFFFFF',
+        background: 'var(--devtools-bg)',
+        color: 'var(--devtools-text)',
         padding: '12px 24px',
         display: 'flex',
         alignItems: 'center',
         gap: '16px',
-        borderBottom: '2px solid #FF8C42',
-        boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+        borderBottom: '2px solid var(--devtools-border)',
+        boxShadow: '0 4px 12px var(--shadow-sm)',
       }}
     >
       <Box
         sx={{
           fontWeight: 600,
           fontSize: '0.875rem',
-          color: '#E7CF8B',
+          color: 'var(--devtools-text-gold)',
           marginRight: 'auto',
         }}
       >
@@ -73,16 +73,16 @@ export default function DevToolsPanel({
         <Button
           onClick={() => setDeviceMode('mobile')}
           sx={{
-            background: deviceMode === 'mobile' ? '#FF8C42' : 'transparent',
-            color: deviceMode === 'mobile' ? '#FFF' : '#E7CF8B',
-            border: '1px solid #E7CF8B',
+            background: deviceMode === 'mobile' ? 'var(--devtools-button-bg)' : 'var(--devtools-button-inactive)',
+            color: deviceMode === 'mobile' ? 'var(--devtools-button-text)' : 'var(--devtools-text-gold)',
+            border: '1px solid var(--devtools-text-gold)',
             padding: '6px 12px',
             borderRadius: '6px',
             fontSize: '0.75rem',
             fontWeight: 600,
             minWidth: 'auto',
             '&:hover': {
-              background: deviceMode === 'mobile' ? '#FF8C42' : 'rgba(231, 207, 139, 0.1)',
+              background: deviceMode === 'mobile' ? 'var(--devtools-button-bg)' : 'var(--devtools-button-hover)',
               opacity: deviceMode === 'mobile' ? 0.9 : 1,
             },
           }}
@@ -98,9 +98,9 @@ export default function DevToolsPanel({
               if (preset) setDevicePreset(preset);
             }}
             sx={{
-              background: '#2A2A2A',
-              color: '#E7CF8B',
-              border: '1px solid #E7CF8B',
+              background: 'var(--devtools-select-bg)',
+              color: 'var(--devtools-text-gold)',
+              border: '1px solid var(--devtools-text-gold)',
               borderRadius: '6px',
               fontSize: '0.75rem',
               fontWeight: 600,
@@ -125,16 +125,16 @@ export default function DevToolsPanel({
         <Button
           onClick={() => setDeviceMode('desktop')}
           sx={{
-            background: deviceMode === 'desktop' ? '#FF8C42' : 'transparent',
-            color: deviceMode === 'desktop' ? '#FFF' : '#E7CF8B',
-            border: '1px solid #E7CF8B',
+            background: deviceMode === 'desktop' ? 'var(--devtools-button-bg)' : 'var(--devtools-button-inactive)',
+            color: deviceMode === 'desktop' ? 'var(--devtools-button-text)' : 'var(--devtools-text-gold)',
+            border: '1px solid var(--devtools-text-gold)',
             padding: '6px 12px',
             borderRadius: '6px',
             fontSize: '0.75rem',
             fontWeight: 600,
             minWidth: 'auto',
             '&:hover': {
-              background: deviceMode === 'desktop' ? '#FF8C42' : 'rgba(231, 207, 139, 0.1)',
+              background: deviceMode === 'desktop' ? 'var(--devtools-button-bg)' : 'var(--devtools-button-hover)',
               opacity: deviceMode === 'desktop' ? 0.9 : 1,
             },
           }}
@@ -145,16 +145,16 @@ export default function DevToolsPanel({
         <Button
           onClick={handleResetData}
           sx={{
-            background: 'transparent',
-            color: '#FF8C42',
-            border: '1px solid #FF8C42',
+            background: 'var(--devtools-button-inactive)',
+            color: 'var(--devtools-border)',
+            border: '1px solid var(--devtools-border)',
             padding: '6px 12px',
             borderRadius: '6px',
             fontSize: '0.75rem',
             fontWeight: 600,
             minWidth: 'auto',
             '&:hover': {
-              background: 'rgba(255, 140, 66, 0.1)',
+              background: 'var(--devtools-button-hover)',
             },
           }}
         >
@@ -164,8 +164,8 @@ export default function DevToolsPanel({
         <Box
           sx={{
             fontSize: '0.75rem',
-            color: 'rgba(255, 255, 255, 0.6)',
-            borderLeft: '1px solid rgba(255, 255, 255, 0.2)',
+            color: 'var(--devtools-version-text)',
+            borderLeft: '1px solid var(--devtools-version-border)',
             paddingLeft: '12px',
           }}
         >

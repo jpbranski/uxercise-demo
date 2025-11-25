@@ -19,7 +19,6 @@ import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import DownloadIcon from '@mui/icons-material/Download';
 import { loadLogs, WorkoutLog } from '../_lib/storage';
 import { saveFile } from '../_lib/tauri';
-import { colors } from '../_theme/theme';
 
 export default function LogPage() {
   const [logs, setLogs] = useState<WorkoutLog[]>([]);
@@ -138,9 +137,25 @@ export default function LogPage() {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           InputProps={{
-            startAdornment: <SearchIcon sx={{ mr: 1, color: colors.neutral.darkGray }} />,
+            startAdornment: <SearchIcon sx={{ mr: 1, color: 'var(--text-muted)' }} />,
           }}
-          sx={{ mb: 2 }}
+          sx={{
+            mb: 2,
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: 'var(--input-border)',
+              },
+              '&:hover fieldset': {
+                borderColor: 'var(--input-border-hover)',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: 'var(--accent-orange)',
+              },
+            },
+            input: {
+              color: 'var(--text)',
+            },
+          }}
         />
         <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
           {['all', 'week', 'month'].map(range => (
@@ -149,11 +164,11 @@ export default function LogPage() {
               label={range === 'all' ? 'All Time' : range === 'week' ? 'This Week' : 'This Month'}
               onClick={() => setDateRange(range)}
               sx={{
-                bgcolor: dateRange === range ? colors.primary.main : '#E4E4E4',
-                color: dateRange === range ? '#FFF' : colors.neutral.darkGray,
+                bgcolor: dateRange === range ? 'var(--accent-orange)' : 'var(--surface)',
+                color: dateRange === range ? 'var(--btn-primary-text)' : 'var(--text)',
                 cursor: 'pointer',
                 '&:hover': {
-                  bgcolor: dateRange === range ? colors.primary.dark : '#D0D0D0',
+                  bgcolor: dateRange === range ? 'var(--accent-orange-dark)' : 'var(--tile-bg)',
                 },
               }}
             />
@@ -215,7 +230,7 @@ export default function LogPage() {
                               display: 'flex',
                               gap: 2,
                               p: 1,
-                              bgcolor: set.completed ? '#F0F9FF' : '#FAFAFA',
+                              bgcolor: set.completed ? 'var(--tile-bg)' : 'var(--surface)',
                               borderRadius: '8px',
                               fontSize: '0.875rem',
                             }}
@@ -247,7 +262,7 @@ export default function LogPage() {
                     </Box>
                   ))}
                   {log.notes && (
-                    <Box sx={{ mt: 2, p: 2, bgcolor: '#FFFBF0', borderRadius: '8px' }}>
+                    <Box sx={{ mt: 2, p: 2, bgcolor: 'var(--tile-bg)', borderRadius: '8px' }}>
                       <Typography variant="caption" sx={{ fontWeight: 600, display: 'block', mb: 0.5 }}>
                         Notes:
                       </Typography>

@@ -17,7 +17,6 @@ import {
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Set } from '../_lib/storage';
-import { colors } from '../_theme/theme';
 
 interface EditSetModalProps {
   open: boolean;
@@ -81,7 +80,7 @@ export default function EditSetModal({
       <DialogContent sx={{ px: 3, pt: 2, pb: 3 }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
           <FormControl fullWidth>
-            <InputLabel>Set Type</InputLabel>
+            <InputLabel sx={{ color: 'var(--text-secondary)' }}>Set Type</InputLabel>
             <Select
               value={localSet.type}
               label="Set Type"
@@ -90,8 +89,15 @@ export default function EditSetModal({
               }
               sx={{
                 bgcolor: 'var(--input-bg)',
+                color: 'var(--text)',
                 '& .MuiOutlinedInput-notchedOutline': {
                   borderColor: 'var(--input-border)',
+                },
+                '&:hover .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'var(--input-border-hover)',
+                },
+                '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+                  borderColor: 'var(--accent-orange)',
                 },
               }}
             >
@@ -121,6 +127,18 @@ export default function EditSetModal({
                 '& fieldset': {
                   borderColor: 'var(--input-border)',
                 },
+                '&:hover fieldset': {
+                  borderColor: 'var(--input-border-hover)',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'var(--accent-orange)',
+                },
+              },
+              input: {
+                color: 'var(--text)',
+              },
+              '& .MuiInputLabel-root': {
+                color: 'var(--text-secondary)',
               },
             }}
           />
@@ -143,6 +161,18 @@ export default function EditSetModal({
                 '& fieldset': {
                   borderColor: 'var(--input-border)',
                 },
+                '&:hover fieldset': {
+                  borderColor: 'var(--input-border-hover)',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'var(--accent-orange)',
+                },
+              },
+              input: {
+                color: 'var(--text)',
+              },
+              '& .MuiInputLabel-root': {
+                color: 'var(--text-secondary)',
               },
             }}
           />
@@ -166,6 +196,18 @@ export default function EditSetModal({
                 '& fieldset': {
                   borderColor: 'var(--input-border)',
                 },
+                '&:hover fieldset': {
+                  borderColor: 'var(--input-border-hover)',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'var(--accent-orange)',
+                },
+              },
+              input: {
+                color: 'var(--text)',
+              },
+              '& .MuiInputLabel-root': {
+                color: 'var(--text-secondary)',
               },
             }}
           />
@@ -185,10 +227,10 @@ export default function EditSetModal({
           onClick={handleDelete}
           startIcon={<DeleteIcon />}
           sx={{
-            color: '#F44336',
+            color: 'var(--error-red)',
             fontWeight: 600,
             '&:hover': {
-              bgcolor: 'rgba(244, 67, 54, 0.1)',
+              bgcolor: 'var(--error-red-hover-bg)',
             },
           }}
         >

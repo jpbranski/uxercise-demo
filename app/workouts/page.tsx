@@ -23,7 +23,6 @@ import AddIcon from '@mui/icons-material/Add';
 import SortIcon from '@mui/icons-material/Sort';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import { loadWorkouts, saveWorkouts, Workout } from '../_lib/storage';
-import { colors } from '../_theme/theme';
 
 export default function WorkoutsPage() {
   const router = useRouter();
@@ -69,9 +68,9 @@ export default function WorkoutsPage() {
     });
 
   const difficultyColors: Record<string, string> = {
-    Beginner: '#4CAF50',
-    Intermediate: '#FF9800',
-    Advanced: '#F44336',
+    Beginner: 'var(--success-green)',
+    Intermediate: 'var(--warning-orange)',
+    Advanced: 'var(--error-red)',
   };
 
   const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
@@ -111,14 +110,30 @@ export default function WorkoutsPage() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon />
+                <SearchIcon sx={{ color: 'var(--text-secondary)' }} />
               </InputAdornment>
             ),
+          }}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: 'var(--input-border)',
+              },
+              '&:hover fieldset': {
+                borderColor: 'var(--input-border-hover)',
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: 'var(--accent-orange)',
+              },
+            },
+            input: {
+              color: 'var(--text)',
+            },
           }}
         />
         <IconButton
           onClick={(e) => setAnchorEl(e.currentTarget)}
-          sx={{ border: '1px solid #E4E4E4' }}
+          sx={{ border: '1px solid var(--border)' }}
         >
           <SortIcon />
         </IconButton>
@@ -174,7 +189,7 @@ export default function WorkoutsPage() {
                         size="small"
                         sx={{
                           bgcolor: difficultyColors[workout.difficulty],
-                          color: '#FFF',
+                          color: 'var(--btn-primary-text)',
                           fontWeight: 600,
                         }}
                       />
@@ -191,9 +206,9 @@ export default function WorkoutsPage() {
                       size="small"
                       onClick={() => router.push(`/builder?id=${workout.id}&play=true`)}
                       sx={{
-                        background: colors.gradients.orangeToGold,
-                        color: '#FFF',
-                        '&:hover': { background: colors.gradients.orangeToGold, opacity: 0.9 },
+                        background: 'var(--btn-primary-bg)',
+                        color: 'var(--btn-primary-text)',
+                        '&:hover': { background: 'var(--btn-primary-hover)' },
                       }}
                     >
                       <PlayArrowIcon />
@@ -207,7 +222,7 @@ export default function WorkoutsPage() {
                     <IconButton
                       size="small"
                       onClick={() => handleDelete(workout.id)}
-                      sx={{ color: '#F44336' }}
+                      sx={{ color: 'var(--error-red)' }}
                     >
                       <DeleteIcon />
                     </IconButton>
@@ -232,11 +247,11 @@ export default function WorkoutsPage() {
                           size="small"
                           onClick={() => handleToggleSchedule(workout, day)}
                           sx={{
-                            bgcolor: isScheduled ? colors.primary.main : '#E4E4E4',
-                            color: isScheduled ? '#FFF' : colors.neutral.darkGray,
+                            bgcolor: isScheduled ? 'var(--accent-orange)' : 'var(--surface)',
+                            color: isScheduled ? 'var(--btn-primary-text)' : 'var(--text)',
                             cursor: 'pointer',
                             '&:hover': {
-                              bgcolor: isScheduled ? colors.primary.dark : '#D0D0D0',
+                              bgcolor: isScheduled ? 'var(--accent-orange-dark)' : 'var(--tile-bg)',
                             },
                           }}
                         />
