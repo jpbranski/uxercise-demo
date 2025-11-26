@@ -263,26 +263,6 @@ function BuilderContent() {
         >
           Save
         </Button>
-        {workout.exercises.length > 0 && (
-          <Button
-            variant="contained"
-            startIcon={<PlayArrowIcon />}
-            onClick={handlePlay}
-            sx={{
-              minWidth: '100px',
-              height: '48px',
-              px: 2,
-              fontWeight: 600,
-              background: 'var(--btn-primary-bg)',
-              color: 'var(--btn-primary-text)',
-              '&:hover': {
-                background: 'var(--btn-primary-hover)',
-              },
-            }}
-          >
-            Start
-          </Button>
-        )}
       </Box>
 
       {/* Workout Info */}
@@ -521,46 +501,68 @@ function BuilderContent() {
                       cursor: 'pointer',
                       borderRadius: '14px',
                       transition: 'all 0.2s ease',
-                      border: '1px solid transparent',
+                      border: '1px solid var(--border)',       
+                      backgroundColor: 'var(--card-bg)',          
+                      color: 'var(--text)',                       
                       '&:hover': {
-                        boxShadow: '0 4px 16px var(--shadow-md)',
                         borderColor: 'var(--accent-orange)',
+                        backgroundColor: 'var(--surface)',
+                        boxShadow: '0 4px 16px var(--shadow-md)',
                         transform: 'translateY(-2px)',
                       },
                     }}
                     onClick={() => handleTemplateSelect(template)}
                   >
                     <CardContent sx={{ p: 2.5 }}>
-                      <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: 'var(--text)' }}>
+                      <Typography
+                        variant="h6"
+                        sx={{ fontWeight: 600, mb: 1, color: 'var(--text)' }}
+                      >
                         {template.name}
                       </Typography>
+
                       <Box sx={{ display: 'flex', gap: 0.75, mb: 1.5, flexWrap: 'wrap' }}>
-                        <Chip
-                          label={template.difficulty}
-                          size="small"
+                        {/* Difficulty pill */}
+                        <Box
                           sx={{
-                            bgcolor: 'linear-gradient(135deg, var(--accent-gold-1) 0%, var(--accent-gold-2) 50%, var(--accent-gold-3) 100%)',
+                            px: 1.1,
+                            py: 0.5,
+                            borderRadius: '9999px',
+                            fontSize: '0.75rem',
                             fontWeight: 600,
+                            background:
+                              'linear-gradient(135deg, var(--accent-gold-1) 0%, var(--accent-gold-2) 50%, var(--accent-gold-3) 100%)',
+                            color: 'var(--btn-primary-text)',    
                           }}
-                        />
+                        >
+                          {template.difficulty}
+                        </Box>
+
+                        {/* Tags */}
                         {template.tags.slice(0, 2).map(tag => (
-                          <Chip
+                          <Box
                             key={tag}
-                            label={tag}
-                            size="small"
                             sx={{
-                              bgcolor: 'var(--surface)',
-                              color: 'var(--text)',
+                              px: 1,
+                              py: 0.5,
+                              borderRadius: '9999px',
+                              fontSize: '0.75rem',
                               fontWeight: 500,
+                              backgroundColor: 'var(--surface)',
+                              color: 'var(--text)',
                             }}
-                          />
+                          >
+                            {tag}
+                          </Box>
                         ))}
                       </Box>
+
                       <Typography variant="body2" sx={{ color: 'var(--text-muted)', fontWeight: 500 }}>
                         {template.estimatedDuration} min · {template.exercises.length} exercises
                       </Typography>
                     </CardContent>
                   </Card>
+
                 </Grid>
               ))}
             </Grid>

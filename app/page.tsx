@@ -267,8 +267,8 @@ export default function DashboardPage() {
             }}
           >
             <CardContent sx={{ textAlign: 'center', py: 5 }}>
-              <FitnessCenterIcon sx={{ fontSize: 64, color: 'var(--muted-text)', mb: 2 }} />
-              <Typography variant="body1" sx={{ color: 'var(--muted-text)', mb: 3, fontWeight: 500 }}>
+              <FitnessCenterIcon sx={{ fontSize: 64, color: 'var(--text-muted)', mb: 2 }} />
+              <Typography variant="body1" sx={{ color: 'var(--text-muted)', mb: 3, fontWeight: 500 }}>
                 No workouts logged yet
               </Typography>
               <Button

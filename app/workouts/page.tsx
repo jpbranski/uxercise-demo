@@ -236,9 +236,11 @@ export default function WorkoutsPage() {
                     <IconButton
                       size="small"
                       onClick={() => router.push(`/builder?id=${workout.id}`)}
+                      sx={{ color: 'var(--text-muted)' }}
                     >
                       <EditIcon />
                     </IconButton>
+
                     <IconButton
                       size="small"
                       onClick={() => handleDelete(workout.id)}

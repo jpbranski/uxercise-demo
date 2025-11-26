@@ -197,7 +197,16 @@ const theme = createTheme({
             borderRadius: '8px',
             '& .MuiChip-label': { color: 'var(--btn-primary-text)' },
           }
-        }
+        },
+        {
+          props: { variant: 'chipDisplay' },
+          style: {
+            backgroundColor: 'var(--surface)',
+            color: 'var(--text)',
+            fontWeight: 500,
+            borderRadius: '6px',
+          },
+        },
       ],
       styleOverrides: {
         root: {

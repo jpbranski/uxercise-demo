@@ -206,13 +206,32 @@ export default function LogPage() {
                     })}
                   </Typography>
                   <Box sx={{ display: 'flex', gap: 1, mt: 1 }}>
-                    <Chip label={`${log.duration} min`} size="small" />
-                    <Chip label={`${log.exercises.length} exercises`} size="small" />
+                    <Chip
+                      label={`${log.duration} min`}
+                      size="small"
+                      variant='chipDisplay'
+                    />
+                    <Chip
+                      label={`${log.exercises.length} exercises`}
+                      size="small"
+                      variant='chipDisplay'
+                    />
+
                   </Box>
                 </Box>
-                <IconButton size="small">
+                <IconButton
+                  size="small"
+                  sx={{
+                    color: 'var(--text)',               
+                    '&:hover': {
+                      color: 'var(--text)',              
+                      backgroundColor: 'var(--surface)', 
+                    },
+                  }}
+                >
                   {expandedId === log.id ? <ExpandLessIcon /> : <ExpandMoreIcon />}
                 </IconButton>
+
               </Box>
 
               <Collapse in={expandedId === log.id}>
