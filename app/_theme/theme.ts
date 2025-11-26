@@ -140,8 +140,38 @@ const theme = createTheme({
     MuiTextField: {
       styleOverrides: {
         root: {
+          '& .MuiInputLabel-root': {
+            color: 'var(--text-secondary)',
+          },
+
+          '& .MuiInputLabel-root.Mui-focused': {
+            color: 'var(--accent-orange)',
+          },
+
           '& .MuiOutlinedInput-root': {
             borderRadius: '8px',
+            backgroundColor: 'var(--input-bg)',
+            color: 'var(--text)',
+
+            '& fieldset': {
+              borderColor: 'var(--input-border)',
+            },
+
+            '&:hover fieldset': {
+              borderColor: 'var(--input-border-hover)',
+            },
+
+            '&.Mui-focused fieldset': {
+              borderColor: 'var(--accent-orange)',
+            },
+
+            '& .MuiSelect-icon': {
+              color: 'var(--text)',
+            },
+          },
+
+          '& input': {
+            color: 'var(--text)',
           },
         },
       },
@@ -151,10 +181,127 @@ const theme = createTheme({
         root: {
           borderRadius: '8px',
           fontWeight: 500,
+          background: colors.gradients.goldToAmber,
+          color: colors.neutral.charcoal,
+
+          '& .MuiChip-label': {
+            color: colors.neutral.charcoal,
+            fontWeight: 600,
+          },
         },
+
         filled: {
           background: colors.gradients.goldToAmber,
           color: colors.neutral.charcoal,
+
+          '& .MuiChip-label': {
+            color: colors.neutral.charcoal,
+          },
+        },
+      },
+    },
+    MuiToggleButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'var(--input-bg)',
+          color: 'var(--text-secondary)',
+          border: '1px solid var(--input-border)',
+          borderRadius: '8px',
+          transition: 'all 0.15s ease',
+
+          '&:hover': {
+            backgroundColor: 'var(--input-border-hover)',
+          },
+
+          '&.Mui-selected': {
+            backgroundColor: 'var(--accent-orange)',
+            color: 'var(--btn-primary-text)',
+            borderColor: 'var(--accent-orange)',
+            '&:hover': {
+              backgroundColor: 'var(--accent-orange-dark)',
+            },
+          },
+        },
+      },
+    },
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: 'var(--card-bg)',
+          borderRadius: '12px',
+          boxShadow: '0 4px 20px var(--shadow-md)',
+          border: '1px solid var(--border)',
+        }
+      }
+    },
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'var(--card-bg)',
+          color: 'var(--text)',
+          fontWeight: 500,
+          fontSize: '0.9rem',
+
+          '&.Mui-selected': {
+            backgroundColor: 'var(--accent-orange-bg-light)',
+            color: 'var(--text)',
+          },
+
+          '&.Mui-selected:hover': {
+            backgroundColor: 'var(--accent-orange-bg-light)',
+          },
+
+          '&:hover': {
+            backgroundColor: 'var(--tile-bg)',
+            color: 'var(--text)',
+          }
+        }
+      }
+    },
+    MuiSelect: {
+      styleOverrides: {
+        select: {
+          color: 'var(--text)',
+          backgroundColor: 'var(--input-bg)',
+        },
+        icon: {
+          color: 'var(--text)',
+        },
+      },
+    },
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: 'var(--text-secondary)',
+        },
+        shrink: {
+          color: 'var(--accent-orange)',
+        },
+      },
+    },
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          borderRadius: '8px',
+          backgroundColor: 'var(--input-bg)',
+          color: 'var(--text)',
+
+          '& fieldset': {
+            borderColor: 'var(--input-border)',
+          },
+          '&:hover fieldset': {
+            borderColor: 'var(--input-border-hover)',
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: 'var(--accent-orange)',
+          },
+        },
+      },
+    },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          color: 'var(--text)',
         },
       },
     },

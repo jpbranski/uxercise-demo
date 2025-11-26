@@ -3,7 +3,7 @@
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { useState, useEffect, ReactNode } from 'react';
 import theme from './_theme/theme';
-import './_styles/globals.css';
+import './globals.css';
 import BottomNav from './_components/BottomNav';
 import DevToolsPanel, { DEVICE_PRESETS, DeviceMode, DevicePreset } from './_components/DevTools/DevToolsPanel';
 import { isTauriApp } from './_lib/tauri';

@@ -133,10 +133,30 @@ export default function WorkoutsPage() {
         />
         <IconButton
           onClick={(e) => setAnchorEl(e.currentTarget)}
-          sx={{ border: '1px solid var(--border)' }}
+          sx={{
+            border: '1px solid var(--border)',
+            borderRadius: '10px',
+            width: 44,
+            height: 44,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            color: 'var(--text)',
+            backgroundColor: 'transparent',
+            transition: 'all 0.15s ease',
+
+            '&:hover': {
+              backgroundColor: 'var(--tile-bg)',
+            },
+
+            '& svg': {
+              fontSize: '1.3rem',
+            },
+          }}
         >
           <SortIcon />
         </IconButton>
+
         <Menu
           anchorEl={anchorEl}
           open={Boolean(anchorEl)}

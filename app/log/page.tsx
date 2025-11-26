@@ -163,14 +163,6 @@ export default function LogPage() {
               key={range}
               label={range === 'all' ? 'All Time' : range === 'week' ? 'This Week' : 'This Month'}
               onClick={() => setDateRange(range)}
-              sx={{
-                bgcolor: dateRange === range ? 'var(--accent-orange)' : 'var(--surface)',
-                color: dateRange === range ? 'var(--btn-primary-text)' : 'var(--text)',
-                cursor: 'pointer',
-                '&:hover': {
-                  bgcolor: dateRange === range ? 'var(--accent-orange-dark)' : 'var(--tile-bg)',
-                },
-              }}
             />
           ))}
         </Box>

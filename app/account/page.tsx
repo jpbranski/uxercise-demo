@@ -36,7 +36,8 @@ export default function AccountPage() {
   const handleThemeChange = (newTheme: Theme) => {
     setTheme(newTheme);
     saveTheme(newTheme);
-    document.body.className = `theme-${newTheme}`;
+    document.body.classList.remove('theme-light', 'theme-dark');
+    document.body.classList.add(`theme-${newTheme}`);
   };
 
   const handleSave = () => {
