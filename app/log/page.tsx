@@ -161,9 +161,17 @@ export default function LogPage() {
           {['all', 'week', 'month'].map(range => (
             <Chip
               key={range}
-              label={range === 'all' ? 'All Time' : range === 'week' ? 'This Week' : 'This Month'}
+              label={
+                range === 'all'
+                  ? 'All Time'
+                  : range === 'week'
+                    ? 'This Week'
+                    : 'This Month'
+              }
+              variant={dateRange === range ? 'chipActive' : 'chip'}
               onClick={() => setDateRange(range)}
             />
+
           ))}
         </Box>
       </Box>

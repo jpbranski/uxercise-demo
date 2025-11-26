@@ -137,12 +137,12 @@ function BuilderContent() {
       exercises: workout.exercises.map(ex =>
         ex.id === exerciseId
           ? {
-              ...ex,
-              sets: [
-                ...ex.sets,
-                { id: `set-${ex.sets.length}`, type: 'standard', reps: 10, weight: 0 },
-              ],
-            }
+            ...ex,
+            sets: [
+              ...ex.sets,
+              { id: `set-${ex.sets.length}`, type: 'standard', reps: 10, weight: 0 },
+            ],
+          }
           : ex
       ),
     });
@@ -165,9 +165,9 @@ function BuilderContent() {
       exercises: workout.exercises.map(ex =>
         ex.id === exerciseId
           ? {
-              ...ex,
-              sets: ex.sets.map(s => (s.id === setId ? { ...s, ...updates } : s)),
-            }
+            ...ex,
+            sets: ex.sets.map(s => (s.id === setId ? { ...s, ...updates } : s)),
+          }
           : ex
       ),
     });
@@ -337,6 +337,7 @@ function BuilderContent() {
                 key={tag}
                 label={tag}
                 size="small"
+                variant={workout.tags.includes(tag) ? 'chipActive' : 'chip'}
                 onClick={() => {
                   const newTags = workout.tags.includes(tag)
                     ? workout.tags.filter(t => t !== tag)
@@ -344,12 +345,9 @@ function BuilderContent() {
                   setWorkout({ ...workout, tags: newTags });
                   setHasChanges(true);
                 }}
-                sx={{
-                  bgcolor: workout.tags.includes(tag) ? 'var(--accent-orange)' : 'var(--surface)',
-                  color: workout.tags.includes(tag) ? 'var(--btn-primary-text)' : 'var(--text)',
-                  cursor: 'pointer',
-                }}
+                sx={{ cursor: 'pointer' }}
               />
+
             ))}
           </Box>
         </CardContent>

@@ -177,28 +177,33 @@ const theme = createTheme({
       },
     },
     MuiChip: {
+      variants: [
+        {
+          props: { variant: 'chip' },
+          style: {
+            backgroundColor: 'var(--surface)',
+            color: 'var(--text)',
+            fontWeight: 500,
+            borderRadius: '8px',
+            '& .MuiChip-label': { color: 'var(--text)' },
+          }
+        },
+        {
+          props: { variant: 'chipActive' },
+          style: {
+            backgroundColor: 'var(--accent-orange)',
+            color: 'var(--btn-primary-text)',
+            fontWeight: 600,
+            borderRadius: '8px',
+            '& .MuiChip-label': { color: 'var(--btn-primary-text)' },
+          }
+        }
+      ],
       styleOverrides: {
         root: {
-          borderRadius: '8px',
           fontWeight: 500,
-          background: colors.gradients.goldToAmber,
-          color: colors.neutral.charcoal,
-
-          '& .MuiChip-label': {
-            color: colors.neutral.charcoal,
-            fontWeight: 600,
-          },
-        },
-
-        filled: {
-          background: colors.gradients.goldToAmber,
-          color: colors.neutral.charcoal,
-
-          '& .MuiChip-label': {
-            color: colors.neutral.charcoal,
-          },
-        },
-      },
+        }
+      }
     },
     MuiToggleButton: {
       styleOverrides: {

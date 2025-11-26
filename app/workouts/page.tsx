@@ -265,16 +265,10 @@ export default function WorkoutsPage() {
                           key={day}
                           label={day}
                           size="small"
+                          variant={isScheduled ? 'chipActive' : 'chip'}
                           onClick={() => handleToggleSchedule(workout, day)}
-                          sx={{
-                            bgcolor: isScheduled ? 'var(--accent-orange)' : 'var(--surface)',
-                            color: isScheduled ? 'var(--btn-primary-text)' : 'var(--text)',
-                            cursor: 'pointer',
-                            '&:hover': {
-                              bgcolor: isScheduled ? 'var(--accent-orange-dark)' : 'var(--tile-bg)',
-                            },
-                          }}
                         />
+
                       );
                     })}
                   </Box>
