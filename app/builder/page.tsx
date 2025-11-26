@@ -73,6 +73,11 @@ function BuilderContent() {
   }, [workoutId, shouldPlay, router]);
 
   const handleSave = () => {
+    if (workout.exercises.length === 0) {
+      alert("A workout must have at least one exercise.");
+      return;
+    }
+
     const workouts = loadWorkouts();
     if (workoutId) {
       const updated = workouts.map(w =>
@@ -88,9 +93,11 @@ function BuilderContent() {
       saveWorkouts([...workouts, newWorkout]);
       router.push(`/builder?id=${newWorkout.id}`);
     }
+
     setHasChanges(false);
-    alert('Workout saved!');
+    alert("Workout saved!");
   };
+
 
   const handleTemplateSelect = (template: typeof WORKOUT_TEMPLATES[0]) => {
     setWorkout({
@@ -501,9 +508,9 @@ function BuilderContent() {
                       cursor: 'pointer',
                       borderRadius: '14px',
                       transition: 'all 0.2s ease',
-                      border: '1px solid var(--border)',       
-                      backgroundColor: 'var(--card-bg)',          
-                      color: 'var(--text)',                       
+                      border: '1px solid var(--border)',
+                      backgroundColor: 'var(--card-bg)',
+                      color: 'var(--text)',
                       '&:hover': {
                         borderColor: 'var(--accent-orange)',
                         backgroundColor: 'var(--surface)',
@@ -532,7 +539,7 @@ function BuilderContent() {
                             fontWeight: 600,
                             background:
                               'linear-gradient(135deg, var(--accent-gold-1) 0%, var(--accent-gold-2) 50%, var(--accent-gold-3) 100%)',
-                            color: 'var(--btn-primary-text)',    
+                            color: 'var(--btn-primary-text)',
                           }}
                         >
                           {template.difficulty}
